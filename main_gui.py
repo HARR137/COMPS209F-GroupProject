@@ -53,9 +53,9 @@ class MainGUI:
                                       msg="Learning Module1",
                                       x=104,
                                       y=100,
-                                      color="white",
+                                      color="black",
                                       fontSize=fontSize["sFont"])
-        self.lm1Img = createImg(self, "resources/img/jakeWhat.gif",
+        self.lm1Img = createImg(self, "resources/img/aca1.jpeg",
                                 self.lmCrood1["x"], self.lmCrood1["y"])
 
         #Learning Moduel 2
@@ -65,7 +65,7 @@ class MainGUI:
                                       y=100,
                                       color=None,
                                       fontSize=fontSize["sFont"])
-        self.lm2Img = createImg(self, "resources/img/mindBlow.gif",
+        self.lm2Img = createImg(self, "resources/img/aca2.jpeg",
                                 self.lmCrood2["x"], self.lmCrood2["y"])
 
         #Learning Moduel 3
@@ -75,7 +75,7 @@ class MainGUI:
                                       y=300,
                                       color=None,
                                       fontSize=fontSize["sFont"])
-        self.lm3Img = createImg(self, "resources/img/no.gif",
+        self.lm3Img = createImg(self, "resources/img/aca3.jpeg",
                                 self.lmCrood3["x"], self.lmCrood3["y"])
 
         #Learning Moduel 4
@@ -85,7 +85,7 @@ class MainGUI:
                                       y=300,
                                       color=None,
                                       fontSize=fontSize["sFont"])
-        self.lm4Img = createImg(self, "resources/img/terrytictictic.gif",
+        self.lm4Img = createImg(self, "resources/img/aca4.jpeg",
                                 self.lmCrood4["x"], self.lmCrood4["y"])
 
         #learning module onclick handler:
