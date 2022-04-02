@@ -50,7 +50,7 @@ class MainGUI:
 
         #Learning Moduel 1
         self.lm1MsgBox = createMsgBox(self,
-                                      msg="LEARNING MODULE 1",
+                                      msg="Learning Module1",
                                       x=104,
                                       y=100,
                                       color="white",
