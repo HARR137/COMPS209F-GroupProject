@@ -7,9 +7,13 @@ import learning_module.lm2.lm2_gui as lm2_gui
 import learning_module.lm3.lm3_gui as lm3_gui
 import learning_module.lm4.lm4_gui as lm4_gui
 
+import scoreboard as sb
 
 class MainGUI:
     def __init__(self):
+
+        scoreboard = sb.Scoreboard()
+
         self.winWidth = 416
         self.winHeight = 896
         self.win = GraphWin('Home', screenSize["width"], screenSize["height"])

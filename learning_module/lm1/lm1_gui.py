@@ -36,7 +36,7 @@ class lm1GUI():
         self.lm1OnClickHandler(self.win)
 
         
-        return 1
+        return {"lm1Score": 10}
 
     def closeWin(self):
         self.win.close()
