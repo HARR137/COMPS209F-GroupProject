@@ -55,7 +55,7 @@ class MainGUI:
                                       y=100,
                                       color="black",
                                       fontSize=fontSize["sFont"])
-        self.lm1Img = createImg(self, "resources/img/aca1.gif",
+        self.lm1Img = createImg(self, "resources/img/aca1.jpeg",
                                 self.lmCrood1["x"], self.lmCrood1["y"])
 
         #Learning Moduel 2
@@ -65,7 +65,7 @@ class MainGUI:
                                       y=100,
                                       color=None,
                                       fontSize=fontSize["sFont"])
-        self.lm2Img = createImg(self, "resources/img/aca2.gif",
+        self.lm2Img = createImg(self, "resources/img/aca2.jpeg",
                                 self.lmCrood2["x"], self.lmCrood2["y"])
 
         #Learning Moduel 3
@@ -75,7 +75,7 @@ class MainGUI:
                                       y=300,
                                       color=None,
                                       fontSize=fontSize["sFont"])
-        self.lm3Img = createImg(self, "resources/img/aca3.gif",
+        self.lm3Img = createImg(self, "resources/img/aca3.jpeg",
                                 self.lmCrood3["x"], self.lmCrood3["y"])
 
         #Learning Moduel 4
@@ -85,7 +85,7 @@ class MainGUI:
                                       y=300,
                                       color=None,
                                       fontSize=fontSize["sFont"])
-        self.lm4Img = createImg(self, "resources/img/aca4.gif",
+        self.lm4Img = createImg(self, "resources/img/aca4.jpeg",
                                 self.lmCrood4["x"], self.lmCrood4["y"])
 
         #learning module onclick handler:
@@ -103,30 +103,55 @@ class MainGUI:
             print("User click sth !")
 
             #Learning module 1 onLick handling condition
-            if targetX >= self.lmCrood1["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood1["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood1["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood1["y"] + lmGifSize["height"] / 2:
+            if targetX >= self.lmCrood1["x"] - lmGifSize[
+                    "width"] / 2 and targetX <= self.lmCrood1["x"] + lmGifSize[
+                        "width"] / 2 and targetY >= self.lmCrood1[
+                            "y"] - lmGifSize[
+                                "height"] / 2 and targetY <= self.lmCrood1[
+                                    "y"] + lmGifSize["height"] / 2:
                 print("We click learning mocdule 1 !!")
                 learn_module1 = lm1_gui.lm1GUI()
                 learn_module1.run()
 
             #Learning module 2 onLick handling condition
-            if targetX >= self.lmCrood2["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood2["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood2["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood2["y"] + lmGifSize["height"] / 2:
+            if targetX >= self.lmCrood2["x"] - lmGifSize[
+                    "width"] / 2 and targetX <= self.lmCrood2["x"] + lmGifSize[
+                        "width"] / 2 and targetY >= self.lmCrood2[
+                            "y"] - lmGifSize[
+                                "height"] / 2 and targetY <= self.lmCrood2[
+                                    "y"] + lmGifSize["height"] / 2:
                 print("We click learning mocdule 2 !!")
                 learn_module2 = lm2_gui.lm2GUI()
                 learn_module2.run()
 
             #Learning module 3 onLick handling condition
-            if targetX >= self.lmCrood3["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood3["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood3["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood3["y"] + lmGifSize["height"] / 2:
+            if targetX >= self.lmCrood3["x"] - lmGifSize[
+                    "width"] / 2 and targetX <= self.lmCrood3["x"] + lmGifSize[
+                        "width"] / 2 and targetY >= self.lmCrood3[
+                            "y"] - lmGifSize[
+                                "height"] / 2 and targetY <= self.lmCrood3[
+                                    "y"] + lmGifSize["height"] / 2:
                 print("We click learning mocdule 3 !!")
                 learn_module3 = lm3_gui.lm3GUI()
                 learn_module3.run()
 
             #Learning module 4 onLick handling condition
-            if targetX >= self.lmCrood4["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood4["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood4["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood4["y"] + lmGifSize["height"] / 2:
+            if targetX >= self.lmCrood4["x"] - lmGifSize[
+                    "width"] / 2 and targetX <= self.lmCrood4["x"] + lmGifSize[
+                        "width"] / 2 and targetY >= self.lmCrood4[
+                            "y"] - lmGifSize[
+                                "height"] / 2 and targetY <= self.lmCrood4[
+                                    "y"] + lmGifSize["height"] / 2:
                 print("We click learning mocdule 4 !!")
                 learn_module4 = lm4_gui.lm4GUI()
                 learn_module4.run()
 
-            if targetX >= self.exitButtonCrood["x"] and targetX <= self.exitButtonCrood["x"] + self.exitButtonSize["width"] and targetY >= self.exitButtonCrood["y"] and targetY <= self.exitButtonCrood["y"] + self.exitButtonSize["height"]:
+            if targetX >= self.exitButtonCrood[
+                    "x"] and targetX <= self.exitButtonCrood[
+                        "x"] + self.exitButtonSize[
+                            "width"] and targetY >= self.exitButtonCrood[
+                                "y"] and targetY <= self.exitButtonCrood[
+                                    "y"] + self.exitButtonSize["height"]:
                 self.closeWin()
                 break
 
