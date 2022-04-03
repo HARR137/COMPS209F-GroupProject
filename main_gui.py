@@ -12,7 +12,8 @@ import scoreboard as sb
 class MainGUI:
     def __init__(self):
 
-        scoreboard = sb.Scoreboard()
+        self.scoreboard = sb.Scoreboard()
+        self.scoreboard.printScore()
 
         self.winWidth = 416
         self.winHeight = 896
@@ -115,7 +116,9 @@ class MainGUI:
                                     "y"] + lmGifSize["height"] / 2:
                 print("We click learning mocdule 1 !!")
                 learn_module1 = lm1_gui.lm1GUI()
-                learn_module1.run()
+                scoreFromLm1 = learn_module1.run()
+                #write your code here
+                
 
             #Learning module 2 onLick handling condition
             if targetX >= self.lmCrood2["x"] - lmGifSize[

@@ -33,9 +33,10 @@ class lm1GUI():
             color = "black",
             fontSize = fontSize["sFont"]
         )
+        
+        
         self.lm1OnClickHandler(self.win)
 
-        
         return {"lm1Score": 10}
 
     def closeWin(self):
