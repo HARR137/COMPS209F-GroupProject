@@ -1,6 +1,1 @@
-{
-  "lm1Score": 0,
-  "lm2Score": 0,
-  "lm3Score": 0,
-  "lm4Score": 0
-}
+{"latestScore": {"lm1": 500, "lm2": 5, "lm3": 7, "lm4": 8}, "bestScore": {"lm1": 1000, "lm2": 100, "lm3": 7, "lm4": 11}}

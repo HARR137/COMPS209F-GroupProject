@@ -34,7 +34,7 @@ class lm2GUI():
             fontSize = fontSize["sFont"]
         )
         self.lm1OnClickHandler(self.win)
-        return 1
+        return 5
 
     def closeWin(self):
         self.win.close()

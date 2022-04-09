@@ -63,6 +63,7 @@ class MainGUI:
         self.lm1Img = createImg(self, "resources/img/aca1.png",
                                 self.lmCrood1["x"], self.lmCrood1["y"])
 
+
         #Learning Moduel 2
         self.lm2MsgBox = createMsgBox(self,
                                       msg="Learning Module2",
@@ -106,59 +107,35 @@ class MainGUI:
             targetX = checkMouse.getX()
             targetY = checkMouse.getY()
             print("User click sth !")
+            print("User click X: ", targetX, "and Y :", targetY )
 
             #Learning module 1 onLick handling condition
-            if targetX >= self.lmCrood1["x"] - lmGifSize[
-                    "width"] / 2 and targetX <= self.lmCrood1["x"] + lmGifSize[
-                        "width"] / 2 and targetY >= self.lmCrood1[
-                            "y"] - lmGifSize[
-                                "height"] / 2 and targetY <= self.lmCrood1[
-                                    "y"] + lmGifSize["height"] / 2:
+            if targetX >= self.lmCrood1["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood1["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood1["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood1["y"] + lmGifSize["height"] / 2:
                 print("We click learning mocdule 1 !!")
                 learn_module1 = lm1_gui.lm1GUI()
-                scoreFromLm1 = learn_module1.run()
-                #write your code here
+                self.scoreboard.saveScore( {"latestScore": {"lm1": learn_module1.run()}} )
                 
+                # self.scoreboard.loadFromFile()
 
             #Learning module 2 onLick handling condition
-            if targetX >= self.lmCrood2["x"] - lmGifSize[
-                    "width"] / 2 and targetX <= self.lmCrood2["x"] + lmGifSize[
-                        "width"] / 2 and targetY >= self.lmCrood2[
-                            "y"] - lmGifSize[
-                                "height"] / 2 and targetY <= self.lmCrood2[
-                                    "y"] + lmGifSize["height"] / 2:
+            if targetX >= self.lmCrood2["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood2["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood2["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood2["y"] + lmGifSize["height"] / 2:
                 print("We click learning mocdule 2 !!")
                 learn_module2 = lm2_gui.lm2GUI()
-                learn_module2.run()
+                self.scoreboard.saveScore( {"latestScore": {"lm2": learn_module2.run()}} )
 
             #Learning module 3 onLick handling condition
-            if targetX >= self.lmCrood3["x"] - lmGifSize[
-                    "width"] / 2 and targetX <= self.lmCrood3["x"] + lmGifSize[
-                        "width"] / 2 and targetY >= self.lmCrood3[
-                            "y"] - lmGifSize[
-                                "height"] / 2 and targetY <= self.lmCrood3[
-                                    "y"] + lmGifSize["height"] / 2:
+            if targetX >= self.lmCrood3["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood3["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood3["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood3["y"] + lmGifSize["height"] / 2:
                 print("We click learning mocdule 3 !!")
                 learn_module3 = lm3_gui.lm3GUI()
-                learn_module3.run()
+                self.scoreboard.saveScore( {"latestScore": {"lm3": learn_module3.run()}} )
 
             #Learning module 4 onLick handling condition
-            if targetX >= self.lmCrood4["x"] - lmGifSize[
-                    "width"] / 2 and targetX <= self.lmCrood4["x"] + lmGifSize[
-                        "width"] / 2 and targetY >= self.lmCrood4[
-                            "y"] - lmGifSize[
-                                "height"] / 2 and targetY <= self.lmCrood4[
-                                    "y"] + lmGifSize["height"] / 2:
+            if targetX >= self.lmCrood4["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood4["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood4["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood4["y"] + lmGifSize["height"] / 2:
                 print("We click learning mocdule 4 !!")
                 learn_module4 = lm4_gui.lm4GUI()
-                learn_module4.run()
+                self.scoreboard.saveScore( {"latestScore": {"lm4": learn_module4.run()}} )
 
-            if targetX >= self.exitButtonCrood[
-                    "x"] and targetX <= self.exitButtonCrood[
-                        "x"] + self.exitButtonSize[
-                            "width"] and targetY >= self.exitButtonCrood[
-                                "y"] and targetY <= self.exitButtonCrood[
-                                    "y"] + self.exitButtonSize["height"]:
+            if targetX >= self.exitButtonCrood["x"] and targetX <= self.exitButtonCrood["x"] + self.exitButtonSize["width"] and targetY >= self.exitButtonCrood["y"] and targetY <= self.exitButtonCrood["y"] + self.exitButtonSize["height"]:
                 self.closeWin()
                 break
 
