@@ -3,7 +3,7 @@ import json
 class Scoreboard:
 
     def __init__(self):
-        # self.loadFromFile()
+        self.loadFromFile()
         self.score = 0
         pass
             # self.totalScore = 
@@ -47,11 +47,21 @@ class Scoreboard:
             scoreboard = json.load(json_file)
             self.score = scoreboard
 
-    def loadIndividualLmMarks(self):
+    def loadIndividualLmMarks(self, whichLm):
         self.loadFromFile()
-        value = list(self.scoreFromLm.values())[1]
-        if value in "score.json": 
-            pos = value.index + 1
-            return json.dumps(self.scoreList, indent=pos)
+
+        latest = self.score["latestScore"][whichLm]
+        best = self.score["bestScore"][whichLm]
+        
+
+        # if self.score["latestScore"][whichLm] == self.score["bestScore"][whichLm]: 
+        #     return self.score["latestScore"][whichLm]
+        # else: 
+        #     return self.score["bestScore"][whichLm]
+        
+        # value = list(self.scoreFromLm.values())[1]
+        # if value in "score.json": 
+        #     pos = value.index + 1
+        #     return json.dumps(self.scoreList, indent=pos)
         pass
         #return specific LM marks 

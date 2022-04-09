@@ -62,7 +62,18 @@ class MainGUI:
                                       fontSize=fontSize["sFont"])
         self.lm1Img = createImg(self, "resources/img/aca1.png",
                                 self.lmCrood1["x"], self.lmCrood1["y"])
-
+        self.lm1LatestScoreBoard = createMsgBox(self, 
+                                            msg = "Latest Score: " + str(self.lmCrood1["x"]),
+                                            x = 104, 
+                                            y = 200, 
+                                            color = "blue", 
+                                            fontSize=fontSize["sFont"])
+        self.lm1BestScoreBoard = createMsgBox(self, 
+                                            msg = "Best Score: ", 
+                                            x = 104, 
+                                            y = 215, 
+                                            color = "red", 
+                                            fontSize=fontSize["sFont"])
 
         #Learning Moduel 2
         self.lm2MsgBox = createMsgBox(self,
