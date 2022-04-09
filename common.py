@@ -1,5 +1,6 @@
 from library.graphics import Text, Point, Image, Rectangle, Circle
 
+
 def createMsgBox(self, **setting):
     theMsgBox = Text(Point(setting["x"], setting["y"]), setting["msg"])
     
@@ -12,7 +13,6 @@ def createMsgBox(self, **setting):
         
     theMsgBox.draw(self.win)
     return theMsgBox
-
 
 
 def createImg(self, imgName, x, y):
@@ -29,21 +29,13 @@ def createRectangle(self, **setting):
     newRectangle.draw(self.win)
     return newRectangle
 
+
 def createCircle(self, **setting):
     newCircle = Circle(Point(setting["x"], setting["y"]), setting["radius"])
     newCircle.setFill(setting["fillColor"])
     newCircle.setOutline(setting["outlineColor"])
     newCircle.draw(self.win)
     return newCircle
-
-# def createOval(self, **setting):
-#     newOval = Oval(Point(setting["x"], setting["y"]), setting["p1"], setting["p2"])
-#     # newOval.getP1(setting["width"])
-#     # newOval.getP2(setting["height"])
-#     newOval.setFill(setting["fillColor"])
-#     newOval.setOutline(setting["outlineColor"])
-#     newOval.draw(self.win)
-#     return newOval
 
 
 def createExitButton(self):

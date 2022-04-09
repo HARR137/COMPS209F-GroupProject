@@ -53,7 +53,6 @@ class MainGUI:
         self.exitButtonText = createMsgBox(
             self,
             msg="x",
-            #+5 is a offset, since exitButton x,y crood is (5,5)
             x=self.exitButtonCrood["x"] + 7, 
             y=self.exitButtonCrood["y"] + 7, 
             color="white",
@@ -211,6 +210,7 @@ class MainGUI:
                 self.lm4LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]))
                 self.lm4BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["best"]))
 
+            #resetButton onLick handling condition
             if targetX >= self.resetButtonCrood["x"] - self.resetButtonSize["radius"] and targetX <= self.resetButtonCrood["x"] + self.resetButtonSize["radius"] and targetY >= self.resetButtonCrood["y"] - self.resetButtonSize["radius"] and targetY <= self.resetButtonCrood["y"] + self.resetButtonSize["radius"]:
                 self.scoreboard.resetScore()
                 self.lm1LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]))
@@ -222,6 +222,7 @@ class MainGUI:
                 self.lm4LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]))
                 self.lm4BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["best"]))
 
+            #exitButton onLick handling condition
             if targetX >= self.exitButtonCrood["x"] - self.resetButtonSize["radius"] and targetX <= self.exitButtonCrood["x"] + self.exitButtonSize["radius"] and targetY >= self.exitButtonCrood["y"] - self.resetButtonSize["radius"] and targetY <= self.exitButtonCrood["y"] + self.exitButtonSize["radius"]:
                 self.closeWin()
                 break
