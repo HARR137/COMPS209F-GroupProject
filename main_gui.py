@@ -35,7 +35,11 @@ class MainGUI:
                      x=208,
                      y=20,
                      color="white",
-                     fontSize=fontSize["xlFont"])         
+                     fontSize=fontSize["xlFont"])  
+
+        # self.headerCrood = {"x": 208, "y": 30}    
+        # self.headerImg = createImg(self, "resources/img/m-l-m.png",
+        #                         self.headerCrood["x"], self.headerCrood["y"])   
 
         #Exit Main Program Button
         self.exitButtonSize = {"radius": 25}
