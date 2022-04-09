@@ -1,6 +1,6 @@
 from library.graphics import *
 from gobal_var import fontSize, screenSize, lmGifSize
-from common import createMsgBox, createImg, createRectangle
+from common import createMsgBox, createImg, createRectangle, createCircle
 
 import learning_module.lm1.lm1_gui as lm1_gui
 import learning_module.lm2.lm2_gui as lm2_gui
@@ -18,6 +18,7 @@ class MainGUI:
         self.winWidth = 416
         self.winHeight = 896
         self.win = GraphWin('Home', screenSize["width"], screenSize["height"])
+        self.win.setBackground("black")
 
         row1X = 104
         col1Y = 150
@@ -33,77 +34,130 @@ class MainGUI:
                      msg="Math Learning Module",
                      x=208,
                      y=20,
-                     color=None,
-                     fontSize=None)
+                     color="white",
+                     fontSize=fontSize["xlFont"])         
 
         #Exit Main Program Button
-        self.exitButtonSize = {"width": 50, "height": 25}
+        self.exitButtonSize = {"radius": 25}
         self.exitButtonCrood = {"x": 5, "y": 5}
-        self.exitButton = createRectangle(self,
+        self.exitButton = createCircle(self,
                                           x=self.exitButtonCrood["x"],
                                           y=self.exitButtonCrood["y"],
-                                          width=self.exitButtonSize["width"],
-                                          height=self.exitButtonSize["height"])
+                                          radius=self.exitButtonSize["radius"], 
+                                          fillColor = "red", 
+                                          outlineColor = "red")
         self.exitButtonText = createMsgBox(
             self,
-            msg="EXIT",
+            msg="x",
             #+5 is a offset, since exitButton x,y crood is (5,5)
-            x=self.exitButtonSize["width"] / 2 + 5,
-            y=self.exitButtonSize["height"] / 2 + 5,
-            color="black",
-            fontSize=fontSize["sFont"])
+            x=self.exitButtonCrood["x"] + 7, 
+            y=self.exitButtonCrood["y"] + 7, 
+            color="white",
+            fontSize=fontSize["mFont"])
 
         #Learning Moduel 1
         self.lm1MsgBox = createMsgBox(self,
-                                      msg="Learning Module1",
+                                      msg="Learning Module 1",
                                       x=104,
                                       y=100,
-                                      color="black",
-                                      fontSize=fontSize["sFont"])
+                                      color="white",
+                                      fontSize=fontSize["mFont"])
         self.lm1Img = createImg(self, "resources/img/aca1.png",
                                 self.lmCrood1["x"], self.lmCrood1["y"])
         self.lm1LatestScoreBoard = createMsgBox(self, 
-                                            msg = "Latest Score: " + str(self.lmCrood1["x"]),
+                                            msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]),
                                             x = 104, 
                                             y = 200, 
-                                            color = "blue", 
+                                            color = "pink", 
                                             fontSize=fontSize["sFont"])
         self.lm1BestScoreBoard = createMsgBox(self, 
-                                            msg = "Best Score: ", 
+                                            msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]), 
                                             x = 104, 
                                             y = 215, 
-                                            color = "red", 
+                                            color = "orange", 
                                             fontSize=fontSize["sFont"])
 
         #Learning Moduel 2
         self.lm2MsgBox = createMsgBox(self,
-                                      msg="Learning Module2",
+                                      msg="Learning Module 2",
                                       x=304,
                                       y=100,
-                                      color=None,
-                                      fontSize=fontSize["sFont"])
+                                      color="white",
+                                      fontSize=fontSize["mFont"])
         self.lm2Img = createImg(self, "resources/img/aca2.png",
                                 self.lmCrood2["x"], self.lmCrood2["y"])
+        self.lm2LatestScoreBoard = createMsgBox(self, 
+                                            msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]),
+                                            x = 304, 
+                                            y = 200, 
+                                            color = "pink", 
+                                            fontSize=fontSize["sFont"])
+        self.lm2BestScoreBoard = createMsgBox(self, 
+                                            msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]), 
+                                            x = 304, 
+                                            y = 215, 
+                                            color = "orange", 
+                                            fontSize=fontSize["sFont"])
 
         #Learning Moduel 3
         self.lm3MsgBox = createMsgBox(self,
-                                      msg="Learning Module3",
+                                      msg="Learning Module 3",
                                       x=104,
                                       y=300,
-                                      color=None,
-                                      fontSize=fontSize["sFont"])
+                                      color="white",
+                                      fontSize=fontSize["mFont"])
         self.lm3Img = createImg(self, "resources/img/aca3.png",
                                 self.lmCrood3["x"], self.lmCrood3["y"])
+        self.lm3LatestScoreBoard = createMsgBox(self, 
+                                            msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["latest"]),
+                                            x = 104, 
+                                            y = 400, 
+                                            color = "pink", 
+                                            fontSize=fontSize["sFont"])
+        self.lm3BestScoreBoard = createMsgBox(self, 
+                                            msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["best"]), 
+                                            x = 104, 
+                                            y = 415, 
+                                            color = "orange", 
+                                            fontSize=fontSize["sFont"])
 
         #Learning Moduel 4
         self.lm4MsgBox = createMsgBox(self,
-                                      msg="Learning Module4",
+                                      msg="Learning Module 4",
                                       x=304,
                                       y=300,
-                                      color=None,
-                                      fontSize=fontSize["sFont"])
+                                      color="white",
+                                      fontSize=fontSize["mFont"])
         self.lm4Img = createImg(self, "resources/img/aca4.png",
                                 self.lmCrood4["x"], self.lmCrood4["y"])
+        self.lm4LatestScoreBoard = createMsgBox(self, 
+                                            msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]),
+                                            x = 304, 
+                                            y = 400, 
+                                            color = "pink", 
+                                            fontSize=fontSize["sFont"])
+        self.lm4BestScoreBoard = createMsgBox(self, 
+                                            msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["best"]), 
+                                            x = 304, 
+                                            y = 415, 
+                                            color = "orange", 
+                                            fontSize=fontSize["sFont"])
+
+        self.resetButtonSize = {"radius": 25}
+        self.resetButtonCrood = {"x": 208, "y": 650}
+        self.resetButton = createCircle(self,
+                                          x=self.resetButtonCrood["x"],
+                                          y=self.resetButtonCrood["y"],
+                                          radius=self.resetButtonSize["radius"], 
+                                          fillColor = "yellow", 
+                                          outlineColor = "yellow")
+        self.resetButtonText = createMsgBox(
+            self,
+            msg="RESET",
+            x=self.resetButtonCrood["x"],
+            y=self.resetButtonCrood["y"],
+            color="green",
+            fontSize=fontSize["sFont"])
 
         #learning module onclick handler:
         self.homeComponentOnClickHandler()
@@ -125,7 +179,8 @@ class MainGUI:
                 print("We click learning mocdule 1 !!")
                 learn_module1 = lm1_gui.lm1GUI()
                 self.scoreboard.saveScore( {"latestScore": {"lm1": learn_module1.run()}} )
-                
+                self.lm1LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]))
+                self.lm1BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]))
                 # self.scoreboard.loadFromFile()
 
             #Learning module 2 onLick handling condition
@@ -133,18 +188,24 @@ class MainGUI:
                 print("We click learning mocdule 2 !!")
                 learn_module2 = lm2_gui.lm2GUI()
                 self.scoreboard.saveScore( {"latestScore": {"lm2": learn_module2.run()}} )
+                self.lm2LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]))
+                self.lm2BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]))
 
             #Learning module 3 onLick handling condition
             if targetX >= self.lmCrood3["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood3["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood3["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood3["y"] + lmGifSize["height"] / 2:
                 print("We click learning mocdule 3 !!")
                 learn_module3 = lm3_gui.lm3GUI()
                 self.scoreboard.saveScore( {"latestScore": {"lm3": learn_module3.run()}} )
+                self.lm3LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["latest"]))
+                self.lm3BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["best"]))
 
             #Learning module 4 onLick handling condition
             if targetX >= self.lmCrood4["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood4["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood4["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood4["y"] + lmGifSize["height"] / 2:
                 print("We click learning mocdule 4 !!")
                 learn_module4 = lm4_gui.lm4GUI()
                 self.scoreboard.saveScore( {"latestScore": {"lm4": learn_module4.run()}} )
+                self.lm4LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]))
+                self.lm4BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["best"]))
 
             if targetX >= self.exitButtonCrood["x"] and targetX <= self.exitButtonCrood["x"] + self.exitButtonSize["width"] and targetY >= self.exitButtonCrood["y"] and targetY <= self.exitButtonCrood["y"] + self.exitButtonSize["height"]:
                 self.closeWin()

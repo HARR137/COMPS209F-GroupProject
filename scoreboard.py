@@ -52,7 +52,8 @@ class Scoreboard:
 
         latest = self.score["latestScore"][whichLm]
         best = self.score["bestScore"][whichLm]
-        
+        latestAndBestScore = {"latest": latest, "best": best}
+        return latestAndBestScore
 
         # if self.score["latestScore"][whichLm] == self.score["bestScore"][whichLm]: 
         #     return self.score["latestScore"][whichLm]
@@ -63,5 +64,10 @@ class Scoreboard:
         # if value in "score.json": 
         #     pos = value.index + 1
         #     return json.dumps(self.scoreList, indent=pos)
-        pass
         #return specific LM marks 
+
+    def resetScore(self): 
+        reset = {"latestScore": {"lm1": 0, "lm2": 0, "lm3": 0, "lm4": 0}, "bestScore": {"lm1": 0, "lm2": 0, "lm3": 0, "lm4": 0}}
+        print("Reseting Score")
+        with open("score.json", "w") as outfile: 
+            json.dump(reset, outfile)

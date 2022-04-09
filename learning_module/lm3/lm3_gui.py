@@ -33,7 +33,7 @@ class lm3GUI():
             fontSize = fontSize["sFont"]
         )
         self.lm1OnClickHandler(self.win)
-        return 7
+        return 70
 
     def closeWin(self):
         self.win.close()

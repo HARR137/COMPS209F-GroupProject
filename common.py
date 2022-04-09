@@ -1,4 +1,4 @@
-from library.graphics import Text, Point, Image, Rectangle
+from library.graphics import Text, Point, Image, Rectangle, Circle
 
 def createMsgBox(self, **setting):
     theMsgBox = Text(Point(setting["x"], setting["y"]), setting["msg"])
@@ -24,8 +24,18 @@ def createImg(self, imgName, x, y):
 def createRectangle(self, **setting):
     # x, y, width, height
     newRectangle = Rectangle(Point(setting["x"], setting["y"]), Point(setting["width"], setting["height"]))
+    newRectangle.setFill(setting["fillColor"])
+    newRectangle.setOutline(setting["outlineColor"])
     newRectangle.draw(self.win)
     return newRectangle
+
+def createCircle(self, **setting):
+    # x, y, width, height
+    newCircle = Circle(Point(setting["x"], setting["y"]), setting["radius"])
+    newCircle.setFill(setting["fillColor"])
+    newCircle.setOutline(setting["outlineColor"])
+    newCircle.draw(self.win)
+    return newCircle
 
 
 def createExitButton(self):
