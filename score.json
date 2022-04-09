@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"latestScore": {"lm1": 7, "lm2": 50, "lm3": 0, "lm4": 0}, "bestScore": {"lm1": 12, "lm2": 50, "lm3": 0, "lm4": 0}}
+=======
+{"latestScore": {"lm1": 7, "lm2": 20, "lm3": 70, "lm4": 80}, "bestScore": {"lm1": 12, "lm2": 50, "lm3": 70, "lm4": 80}}
+>>>>>>> d30e3da... update: font colors

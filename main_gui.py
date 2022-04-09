@@ -18,7 +18,7 @@ class MainGUI:
         self.winWidth = 416
         self.winHeight = 896
         self.win = GraphWin('Home', screenSize["width"], screenSize["height"])
-        self.win.setBackground("black")
+        self.win.setBackground("#161616")
 
         row1X = 104
         col1Y = 150
@@ -41,6 +41,7 @@ class MainGUI:
         # self.headerImg = createImg(self, "resources/img/m-l-m.png",
         #                         self.headerCrood["x"], self.headerCrood["y"])   
 
+
         #Exit Main Program Button
         self.exitButtonSize = {"radius": 25}
         self.exitButtonCrood = {"x": 5, "y": 5}
@@ -48,8 +49,8 @@ class MainGUI:
                                           x=self.exitButtonCrood["x"],
                                           y=self.exitButtonCrood["y"],
                                           radius=self.exitButtonSize["radius"], 
-                                          fillColor = "red", 
-                                          outlineColor = "red")
+                                          fillColor = "#C73618", 
+                                          outlineColor = "#C73618")
         self.exitButtonText = createMsgBox(
             self,
             msg="x",
@@ -71,13 +72,13 @@ class MainGUI:
                                             msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]),
                                             x = 104, 
                                             y = 200, 
-                                            color = "pink", 
+                                            color = "#F5CEC7", 
                                             fontSize=fontSize["sFont"])
         self.lm1BestScoreBoard = createMsgBox(self, 
                                             msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]), 
                                             x = 104, 
                                             y = 215, 
-                                            color = "orange", 
+                                            color = "#FFE284", 
                                             fontSize=fontSize["sFont"])
 
         #Learning Moduel 2
@@ -93,13 +94,13 @@ class MainGUI:
                                             msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]),
                                             x = 304, 
                                             y = 200, 
-                                            color = "pink", 
+                                            color = "#F5CEC7", 
                                             fontSize=fontSize["sFont"])
         self.lm2BestScoreBoard = createMsgBox(self, 
                                             msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]), 
                                             x = 304, 
                                             y = 215, 
-                                            color = "orange", 
+                                            color = "#FFE284", 
                                             fontSize=fontSize["sFont"])
 
         #Learning Moduel 3
@@ -115,13 +116,13 @@ class MainGUI:
                                             msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["latest"]),
                                             x = 104, 
                                             y = 400, 
-                                            color = "pink", 
+                                            color = "#F5CEC7", 
                                             fontSize=fontSize["sFont"])
         self.lm3BestScoreBoard = createMsgBox(self, 
                                             msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["best"]), 
                                             x = 104, 
                                             y = 415, 
-                                            color = "orange", 
+                                            color = "#FFE284", 
                                             fontSize=fontSize["sFont"])
 
         #Learning Moduel 4
@@ -137,14 +138,21 @@ class MainGUI:
                                             msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]),
                                             x = 304, 
                                             y = 400, 
-                                            color = "pink", 
+                                            color = "#F5CEC7", 
                                             fontSize=fontSize["sFont"])
         self.lm4BestScoreBoard = createMsgBox(self, 
                                             msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["best"]), 
                                             x = 304, 
                                             y = 415, 
-                                            color = "orange", 
+                                            color = "#FFE284", 
                                             fontSize=fontSize["sFont"])
+
+        createMsgBox(self, 
+                     msg = "↑   Click Image to Start   ↑", 
+                     x = 208, 
+                     y = 495, 
+                     color = "#CDB3D4", 
+                     fontSize=fontSize["sFont"])
 
         self.resetButtonSize = {"radius": 35}
         self.resetButtonCrood = {"x": 208, "y": 650}
@@ -152,8 +160,8 @@ class MainGUI:
                                           x=self.resetButtonCrood["x"],
                                           y=self.resetButtonCrood["y"],
                                           radius=self.resetButtonSize["radius"], 
-                                          fillColor = "green", 
-                                          outlineColor = "green")
+                                          fillColor = "#159947", 
+                                          outlineColor = "#159947")
         self.resetButtonText = createMsgBox(
             self,
             msg="RESET\nALL SCORE",
