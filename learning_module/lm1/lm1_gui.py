@@ -22,7 +22,9 @@ class lm1GUI():
             x = self.exitButtonCrood["x"],
             y = self.exitButtonCrood["y"],
             width = self.exitButtonSize["width"],
-            height = self.exitButtonSize["height"]
+            height = self.exitButtonSize["height"],
+            fillColor = None, 
+            outlineColor = None
         )
         self.exitButtonText = createMsgBox(
             self,
@@ -38,7 +40,7 @@ class lm1GUI():
         self.lm1OnClickHandler(self.win)
 
         # return {"lm1Score": 10}
-        return 1200
+        return 12
 
     def closeWin(self):
         self.win.close()

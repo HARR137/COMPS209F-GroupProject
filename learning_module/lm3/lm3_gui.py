@@ -21,7 +21,9 @@ class lm3GUI():
             x = self.exitButtonCrood["x"],
             y = self.exitButtonCrood["y"],
             width = self.exitButtonSize["width"],
-            height = self.exitButtonSize["height"]
+            height = self.exitButtonSize["height"], 
+            fillColor = None, 
+            outlineColor = None
         )
         self.exitButtonText = createMsgBox(
             self,

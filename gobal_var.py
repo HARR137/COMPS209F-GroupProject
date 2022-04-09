@@ -1,4 +1,5 @@
 fontSize = {
+    "xsFont" : 8, 
     "sFont" : 10,
     "mFont" : 14,
     "lFont" : 18, 

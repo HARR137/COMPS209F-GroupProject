@@ -1,6 +1,6 @@
 from library.graphics import *
 from gobal_var import fontSize, screenSize, lmGifSize
-from common import createMsgBox, createImg, createRectangle, createCircle
+from common import createMsgBox, createImg, createCircle
 
 import learning_module.lm1.lm1_gui as lm1_gui
 import learning_module.lm2.lm2_gui as lm2_gui
@@ -143,20 +143,20 @@ class MainGUI:
                                             color = "orange", 
                                             fontSize=fontSize["sFont"])
 
-        self.resetButtonSize = {"radius": 25}
+        self.resetButtonSize = {"radius": 35}
         self.resetButtonCrood = {"x": 208, "y": 650}
         self.resetButton = createCircle(self,
                                           x=self.resetButtonCrood["x"],
                                           y=self.resetButtonCrood["y"],
                                           radius=self.resetButtonSize["radius"], 
-                                          fillColor = "yellow", 
-                                          outlineColor = "yellow")
+                                          fillColor = "green", 
+                                          outlineColor = "green")
         self.resetButtonText = createMsgBox(
             self,
-            msg="RESET",
+            msg="RESET\nALL SCORE",
             x=self.resetButtonCrood["x"],
             y=self.resetButtonCrood["y"],
-            color="green",
+            color="white",
             fontSize=fontSize["sFont"])
 
         #learning module onclick handler:
@@ -207,7 +207,18 @@ class MainGUI:
                 self.lm4LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]))
                 self.lm4BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["best"]))
 
-            if targetX >= self.exitButtonCrood["x"] and targetX <= self.exitButtonCrood["x"] + self.exitButtonSize["width"] and targetY >= self.exitButtonCrood["y"] and targetY <= self.exitButtonCrood["y"] + self.exitButtonSize["height"]:
+            if targetX >= self.resetButtonCrood["x"] - self.resetButtonSize["radius"] and targetX <= self.resetButtonCrood["x"] + self.resetButtonSize["radius"] and targetY >= self.resetButtonCrood["y"] - self.resetButtonSize["radius"] and targetY <= self.resetButtonCrood["y"] + self.resetButtonSize["radius"]:
+                self.scoreboard.resetScore()
+                self.lm1LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]))
+                self.lm1BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]))
+                self.lm2LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]))
+                self.lm2BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]))
+                self.lm3LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["latest"]))
+                self.lm3BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["best"]))
+                self.lm4LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]))
+                self.lm4BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["best"]))
+
+            if targetX >= self.exitButtonCrood["x"] - self.resetButtonSize["radius"] and targetX <= self.exitButtonCrood["x"] + self.exitButtonSize["radius"] and targetY >= self.exitButtonCrood["y"] - self.resetButtonSize["radius"] and targetY <= self.exitButtonCrood["y"] + self.exitButtonSize["radius"]:
                 self.closeWin()
                 break
 

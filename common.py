@@ -30,12 +30,20 @@ def createRectangle(self, **setting):
     return newRectangle
 
 def createCircle(self, **setting):
-    # x, y, width, height
     newCircle = Circle(Point(setting["x"], setting["y"]), setting["radius"])
     newCircle.setFill(setting["fillColor"])
     newCircle.setOutline(setting["outlineColor"])
     newCircle.draw(self.win)
     return newCircle
+
+# def createOval(self, **setting):
+#     newOval = Oval(Point(setting["x"], setting["y"]), setting["p1"], setting["p2"])
+#     # newOval.getP1(setting["width"])
+#     # newOval.getP2(setting["height"])
+#     newOval.setFill(setting["fillColor"])
+#     newOval.setOutline(setting["outlineColor"])
+#     newOval.draw(self.win)
+#     return newOval
 
 
 def createExitButton(self):
