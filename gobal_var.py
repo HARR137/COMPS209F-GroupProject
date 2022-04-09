@@ -3,7 +3,9 @@ fontSize = {
     "sFont" : 10,
     "mFont" : 14,
     "lFont" : 18, 
-    "xlFont" : 24
+    "xlFont" : 24, 
+    "xxlFont" : 30, 
+    "xxxlFont" : 36
 }
 
 screenSize = {

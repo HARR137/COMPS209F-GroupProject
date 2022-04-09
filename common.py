@@ -1,4 +1,4 @@
-from library.graphics import Text, Point, Image, Rectangle, Circle
+from library.graphics import Text, Point, Image, Rectangle, Circle, Entry
 
 
 def createMsgBox(self, **setting):
@@ -36,4 +36,12 @@ def createCircle(self, **setting):
     newCircle.setOutline(setting["outlineColor"])
     newCircle.draw(self.win)
     return newCircle
-    
+
+
+def createInputBox(self, **setting):
+    # creste an input box
+    inputBox = Entry(Point(setting["x"], setting["y"]), setting["length"])
+    inputBox.setSize(36)
+    inputBox.setFace("courier")
+    inputBox.draw(self.win)
+    return inputBox
