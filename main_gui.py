@@ -62,7 +62,7 @@ class MainGUI:
                                       y=100,
                                       color="white",
                                       fontSize=fontSize["mFont"])
-        self.lm1Img = createImg(self, "resources/img/aca1.png",
+        self.lm1Img = createImg(self, "resources/img/o-or-e.png",
                                 self.lmCrood1["x"], self.lmCrood1["y"])
         self.lm1LatestScoreBoard = createMsgBox(self, 
                                             msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]),
@@ -84,7 +84,7 @@ class MainGUI:
                                       y=100,
                                       color="white",
                                       fontSize=fontSize["mFont"])
-        self.lm2Img = createImg(self, "resources/img/aca2.png",
+        self.lm2Img = createImg(self, "resources/img/l-or-s.png",
                                 self.lmCrood2["x"], self.lmCrood2["y"])
         self.lm2LatestScoreBoard = createMsgBox(self, 
                                             msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]),
@@ -106,7 +106,7 @@ class MainGUI:
                                       y=300,
                                       color="white",
                                       fontSize=fontSize["mFont"])
-        self.lm3Img = createImg(self, "resources/img/aca3.png",
+        self.lm3Img = createImg(self, "resources/img/a-s-m-d.png",
                                 self.lmCrood3["x"], self.lmCrood3["y"])
         self.lm3LatestScoreBoard = createMsgBox(self, 
                                             msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["latest"]),
@@ -128,7 +128,7 @@ class MainGUI:
                                       y=300,
                                       color="white",
                                       fontSize=fontSize["mFont"])
-        self.lm4Img = createImg(self, "resources/img/aca4.png",
+        self.lm4Img = createImg(self, "resources/img/n-o.png",
                                 self.lmCrood4["x"], self.lmCrood4["y"])
         self.lm4LatestScoreBoard = createMsgBox(self, 
                                             msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]),
