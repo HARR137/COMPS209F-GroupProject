@@ -1,6 +1,9 @@
 from library.graphics import *
 from gobal_var import fontSize
-from common import createMsgBox, createImg, createRectangle
+from common import createMsgBox, createInputBox, createRectangle
+
+import learning_module.lm4.hips_gui as hips
+
 
 class lm4GUI():
     def __init__(self):
@@ -34,11 +37,34 @@ class lm4GUI():
             color = "black",
             fontSize = fontSize["sFont"]
         )
+        
+        self.gameBox = createRectangle(
+            self,
+            x = 60,
+            y = 50,
+            width = 440,
+            height = 200,
+            fillColor = None,
+            outlineColor = None
+        )
+        self.gameBox.setFill("red")
+
+
+        self.inputBox = createInputBox(self, x=250, y=300, length=20)
+        print(self.inputBox.getText())
+
+        hipsModule = hips.hipsGui()
+        hipsModule.run()
+
         self.lm1OnClickHandler(self.win)
         return 80
 
     def closeWin(self):
         self.win.close()
+
+
+    def generateNumber():
+        pass
 
 
     def lm1OnClickHandler(self, win):
@@ -51,7 +77,3 @@ class lm4GUI():
                 self.closeWin()
                 break
                     
-
-if __name__ == "__main__":
-    lm4GUI = lm4GUI()
-    lm4GUI.run()
