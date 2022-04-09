@@ -36,29 +36,4 @@ def createCircle(self, **setting):
     newCircle.setOutline(setting["outlineColor"])
     newCircle.draw(self.win)
     return newCircle
-
-
-def createExitButton(self):
-    #Exit Main Program Button
-        # self.exitButtonSize= { "width": 50, "height": 25 }
-        # self.exitButtonCrood = { "x": 5, "y": 5 }
-        # self.exitButton = createRectangle(
-        #     self,
-        #     x = self.exitButtonCrood["x"],
-        #     y = self.exitButtonCrood["y"],
-        #     width = self.exitButtonSize["width"],
-        #     height = self.exitButtonSize["height"]
-        # )
-        
-        #Exit Main Program Button
-        exitButtonSize= { "width": 50, "height": 25 }
-        exitButtonCrood = { "x": 5, "y": 5 }
-        exitButton = createRectangle(
-            self,
-            x = exitButtonCrood["x"],
-            y = exitButtonCrood["y"],
-            width = exitButtonSize["width"],
-            height = self.exitButtonSize["height"]
-        )
-
-# def buttonOnClickHandler(self, element, callBackFunc):
+    
