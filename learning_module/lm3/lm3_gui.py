@@ -199,7 +199,7 @@ class lm3GUI():
                 self.correctOrNot.undraw()
                 self.inputBox.setText("")
                 counter += 1
-                if counter == 4:
+                if counter == 5:
                     self.closeWin()
                     break
       
