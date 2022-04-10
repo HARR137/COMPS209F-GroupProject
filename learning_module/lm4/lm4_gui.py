@@ -12,8 +12,6 @@ class lm4GUI():
         self.roundNum = 5
         self.checkEnterButton = False
         self.score = 0
-        # self.value2
-        # self.value3
         
         
     def run(self):
@@ -58,12 +56,8 @@ class lm4GUI():
 
         self.generateNumber()
 
-
-        
-
-        # release it at the end! 
-        # hintsModule = hints.hintsGui()
-        # hintsModule.run()
+        hintsModule = hints.hintsGui()
+        hintsModule.run()
 
         # self.enterButtonSize = { "width": 50, "height": 25 }
         # self.enterButtonCrood = { "x": 150, "y": 400 }
