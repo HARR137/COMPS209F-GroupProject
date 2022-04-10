@@ -189,6 +189,7 @@ class lm3GUI():
                             color=resultMessageColor(checkedAnswer),
                             fontSize=fontSize["lFont"]
                             )
+                self.inputBox.setText("")
                 print(checkedAnswer)
 
             # nextButton onClick
