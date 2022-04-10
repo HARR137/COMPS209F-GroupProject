@@ -88,7 +88,7 @@ class MainGUI:
                                       y=100,
                                       color="white",
                                       fontSize=fontSize["mFont"])
-        self.lm2Img = createImg(self, "resources/img/l-or-s.png",
+        self.lm2Img = createImg(self, "resources/img/bigger.png",
                                 self.lmCrood2["x"], self.lmCrood2["y"])
         self.lm2LatestScoreBoard = createMsgBox(self, 
                                             msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]) + " / 3",
@@ -110,7 +110,7 @@ class MainGUI:
                                       y=300,
                                       color="white",
                                       fontSize=fontSize["mFont"])
-        self.lm3Img = createImg(self, "resources/img/a-s-m-d.png",
+        self.lm3Img = createImg(self, "resources/img/a-s.png",
                                 self.lmCrood3["x"], self.lmCrood3["y"])
         self.lm3LatestScoreBoard = createMsgBox(self, 
                                             msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["latest"]),
@@ -154,7 +154,7 @@ class MainGUI:
                      color = "#CDB3D4", 
                      fontSize=fontSize["sFont"])
 
-        self.resetButtonSize = {"radius": 35}
+        self.resetButtonSize = {"radius": 30}
         self.resetButtonCrood = {"x": 208, "y": 650}
         self.resetButton = createCircle(self,
                                           x=self.resetButtonCrood["x"],
@@ -164,7 +164,7 @@ class MainGUI:
                                           outlineColor = "#159947")
         self.resetButtonText = createMsgBox(
             self,
-            msg="RESET\nALL SCORE",
+            msg="Reset\nAll Score",
             x=self.resetButtonCrood["x"] + 1.3, # fix center problem
             y=self.resetButtonCrood["y"],
             color="white",
