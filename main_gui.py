@@ -69,13 +69,13 @@ class MainGUI:
         self.lm1Img = createImg(self, "resources/img/o-or-e.png",
                                 self.lmCrood1["x"], self.lmCrood1["y"])
         self.lm1LatestScoreBoard = createMsgBox(self, 
-                                            msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]),
+                                            msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]) + " / 3",
                                             x = 104, 
                                             y = 200, 
                                             color = "#F5CEC7", 
                                             fontSize=fontSize["sFont"])
         self.lm1BestScoreBoard = createMsgBox(self, 
-                                            msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]), 
+                                            msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]) + " / 3", 
                                             x = 104, 
                                             y = 215, 
                                             color = "#FFE284", 
@@ -91,13 +91,13 @@ class MainGUI:
         self.lm2Img = createImg(self, "resources/img/l-or-s.png",
                                 self.lmCrood2["x"], self.lmCrood2["y"])
         self.lm2LatestScoreBoard = createMsgBox(self, 
-                                            msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]),
+                                            msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]) + " / 3",
                                             x = 304, 
                                             y = 200, 
                                             color = "#F5CEC7", 
                                             fontSize=fontSize["sFont"])
         self.lm2BestScoreBoard = createMsgBox(self, 
-                                            msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]), 
+                                            msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]) + " / 3", 
                                             x = 304, 
                                             y = 215, 
                                             color = "#FFE284", 
@@ -135,13 +135,13 @@ class MainGUI:
         self.lm4Img = createImg(self, "resources/img/n-o.png",
                                 self.lmCrood4["x"], self.lmCrood4["y"])
         self.lm4LatestScoreBoard = createMsgBox(self, 
-                                            msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]),
+                                            msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]) + " / 5",
                                             x = 304, 
                                             y = 400, 
                                             color = "#F5CEC7", 
                                             fontSize=fontSize["sFont"])
         self.lm4BestScoreBoard = createMsgBox(self, 
-                                            msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["best"]), 
+                                            msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["best"]) + " / 5", 
                                             x = 304, 
                                             y = 415, 
                                             color = "#FFE284", 
