@@ -113,13 +113,13 @@ class MainGUI:
         self.lm3Img = createImg(self, "resources/img/a-s.png",
                                 self.lmCrood3["x"], self.lmCrood3["y"])
         self.lm3LatestScoreBoard = createMsgBox(self, 
-                                            msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["latest"]),
+                                            msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["latest"])+ " / 5",
                                             x = 104, 
                                             y = 400, 
                                             color = "#F5CEC7", 
                                             fontSize=fontSize["sFont"])
         self.lm3BestScoreBoard = createMsgBox(self, 
-                                            msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["best"]), 
+                                            msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["best"])+ " / 5", 
                                             x = 104, 
                                             y = 415, 
                                             color = "#FFE284", 
@@ -190,8 +190,8 @@ class MainGUI:
                 print("We click learning module 1 !!")
                 learn_module1 = lm1_gui.lm1GUI()
                 self.scoreboard.saveScore( {"latestScore": {"lm1": learn_module1.run()}} )
-                self.lm1LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]))
-                self.lm1BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]))
+                self.lm1LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]) + " / 3")
+                self.lm1BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]) + " / 3")
                 # self.scoreboard.loadFromFile()
 
             #Learning module 2 onLick handling condition
@@ -199,36 +199,36 @@ class MainGUI:
                 print("We click learning module 2 !!")
                 learn_module2 = lm2_gui.lm2GUI()
                 self.scoreboard.saveScore( {"latestScore": {"lm2": learn_module2.run()}} )
-                self.lm2LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]))
-                self.lm2BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]))
+                self.lm2LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]) + " / 3")
+                self.lm2BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]) + " / 3")
 
             #Learning module 3 onLick handling condition
             if targetX >= self.lmCrood3["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood3["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood3["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood3["y"] + lmGifSize["height"] / 2:
                 print("We click learning module 3 !!")
                 learn_module3 = lm3_gui.lm3GUI()
                 self.scoreboard.saveScore( {"latestScore": {"lm3": learn_module3.run()}} )
-                self.lm3LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["latest"]))
-                self.lm3BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["best"]))
+                self.lm3LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["latest"]) + " / 5")
+                self.lm3BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["best"]) + " / 5")
 
             #Learning module 4 onLick handling condition
             if targetX >= self.lmCrood4["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood4["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood4["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood4["y"] + lmGifSize["height"] / 2:
                 print("We click learning module 4 !!")
                 learn_module4 = lm4_gui.lm4GUI()
                 self.scoreboard.saveScore( {"latestScore": {"lm4": learn_module4.run()}} )
-                self.lm4LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]))
-                self.lm4BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["best"]))
+                self.lm4LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]) + " / 5")
+                self.lm4BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["best"]) + " / 5")
 
             #resetButton onLick handling condition
             if targetX >= self.resetButtonCrood["x"] - self.resetButtonSize["radius"] and targetX <= self.resetButtonCrood["x"] + self.resetButtonSize["radius"] and targetY >= self.resetButtonCrood["y"] - self.resetButtonSize["radius"] and targetY <= self.resetButtonCrood["y"] + self.resetButtonSize["radius"]:
                 self.scoreboard.resetScore()
-                self.lm1LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]))
-                self.lm1BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]))
-                self.lm2LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]))
-                self.lm2BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]))
-                self.lm3LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["latest"]))
-                self.lm3BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["best"]))
-                self.lm4LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]))
-                self.lm4BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["best"]))
+                self.lm1LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]) + " / 3")
+                self.lm1BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]) + " / 3")
+                self.lm2LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]) + " / 3")
+                self.lm2BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]) + " / 3")
+                self.lm3LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["latest"]) + " / 5")
+                self.lm3BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["best"]) + " / 5")
+                self.lm4LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]) + " / 5")
+                self.lm4BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["best"]) + " / 5")
 
             #exitButton onLick handling condition
             if targetX >= self.exitButtonCrood["x"] - self.exitButtonSize["radius"] and targetX <= self.exitButtonCrood["x"] + self.exitButtonSize["radius"] and targetY >= self.exitButtonCrood["y"] - self.exitButtonSize["radius"] and targetY <= self.exitButtonCrood["y"] + self.exitButtonSize["radius"]:
