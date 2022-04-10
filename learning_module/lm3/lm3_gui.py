@@ -189,7 +189,6 @@ class lm3GUI():
                             color=resultMessageColor(checkedAnswer),
                             fontSize=fontSize["lFont"]
                             )
-                self.inputBox.setText("")
                 print(checkedAnswer)
 
             # nextButton onClick
@@ -198,6 +197,7 @@ class lm3GUI():
                 self.currentTitle.undraw()
                 self.currentQuestion.undraw()
                 self.correctOrNot.undraw()
+                self.inputBox.setText("")
                 counter += 1
                 if counter == 4:
                     self.closeWin()
