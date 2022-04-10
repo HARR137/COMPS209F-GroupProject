@@ -45,3 +45,4 @@ def createInputBox(self, **setting):
     inputBox.setFace("courier")
     inputBox.draw(self.win)
     return inputBox
+

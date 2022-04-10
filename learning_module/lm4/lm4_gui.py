@@ -11,6 +11,7 @@ class lm4GUI():
         self.randNumList = []
         self.roundNum = 5
         self.checkEnterButton = False
+        self.score = 0
         # self.value2
         # self.value3
         
@@ -18,13 +19,12 @@ class lm4GUI():
     def run(self):
         self.winWidth = 500
         self.winHeight = 500
+        self.win = GraphWin('Learning Module 4', self.winWidth, self.winHeight)
+        # self.win.setBackground("#161616")
 
         #ExitButton
         self.exitButtonSize = { "width": 50, "height": 25 }
         self.exitButtonCrood = { "x": 5, "y": 50 }
-        
-        self.win = GraphWin('Learning Module 4', self.winWidth, self.winHeight)
-
         self.exitButtonSize = {"radius": 25}
         self.exitButtonCrood = {"x": 5, "y": 5}
         self.exitButton = createCircle(self,
@@ -77,42 +77,43 @@ class lm4GUI():
             starting_y = self.enterButtonCrood["starting_y"], 
             ending_x = self.enterButtonCrood["ending_x"],
             ending_y = self.enterButtonCrood["ending_y"],
-            fillColor = None, 
-            outlineColor = None
+            fillColor = "#159947", 
+            outlineColor = "#159947"
         )
         self.enterButtonText = createMsgBox(
             self,
             msg = "ENTER",
             x = self.enterTextCrood["x"],
             y = self.enterTextCrood["y"],
-            color = "black",
+            color = "white",
             fontSize = fontSize["sFont"]
         )
 
 
         self.nextButtonCrood = { "starting_x": 285, "starting_y": 380, "ending_x": 385, "ending_y": 410 }
         self.nextTextCrood = { "x": 335, "y": 395 }
-        self.enterButton = createRectangle(
+        self.nextButton = createRectangle(
             self,
             starting_x = self.nextButtonCrood["starting_x"],
             starting_y = self.nextButtonCrood["starting_y"], 
             ending_x = self.nextButtonCrood["ending_x"],
             ending_y = self.nextButtonCrood["ending_y"],
-            fillColor = None, 
-            outlineColor = None
+            fillColor = "#0193A5", 
+            outlineColor = "#0193A5"
         )
-        self.enterButtonText = createMsgBox(
+        self.nextButtonText = createMsgBox(
             self,
             msg = "NEXT QUESTION",
             x = self.nextTextCrood["x"],
             y = self.nextTextCrood["y"],
-            color = "black",
+            color = "white",
             fontSize = fontSize["sFont"]
         )
 
 
         self.lm1OnClickHandler(self.win)
-        return 80
+
+        return self.score
 
     def closeWin(self):
         self.win.close()
@@ -137,18 +138,24 @@ class lm4GUI():
             margin = margin + 55
 
     def getAns(self): 
-        userAns = []
         userAns = self.inputBox.getText()
-        return userAns
+        return list(eval(userAns))
 
     def checkAns(self, question): 
-        correctAns = []
-        correctAns = question.sort()
         returnUserAns = self.getAns()
-        if correctAns == returnUserAns: 
-            return "Correct!"
+        question.sort()
+
+        if question == returnUserAns: 
+            self.score += 1
+            return True
         else: 
-            return "Wrong!"
+            return False
+        
+
+        # if question == returnUserAns: 
+        #     return "Very good! It's correct!"
+        # else: 
+        #     return "Wrong answer... Practice makes perfect!"
 
     def lm1OnClickHandler(self, win):
         i = 4
@@ -159,6 +166,7 @@ class lm4GUI():
 
             if finishAns: 
                 #start of printing questions--------
+
                 questions = self.randNumList[i]
 
                 self.generateNumList(questions)
@@ -180,11 +188,18 @@ class lm4GUI():
             if targetX >= self.enterButtonCrood["starting_x"] and targetX <= self.enterButtonCrood["ending_x"] and targetY >= self.enterButtonCrood["starting_y"] and targetY <= self.enterButtonCrood["ending_y"]:
                 self.checkEnterButton = True
                 self.getAns()
+                
+                returnedAns = self.checkAns(questions)
+
+                returnMsg = lambda ans: "Very good! It's correct!" if (ans) else "Wrong answer... Practice makes perfect!"
+                returnColor = lambda ans: "green" if (ans) else "red"
+
                 self.checkAnsMsgBox = createMsgBox(self,
-                                      msg=self.checkAns(questions),
+                                      msg=returnMsg(returnedAns),
+                                    #   msg=self.checkAns(questions),
                                       x=250,
-                                      y=250,
-                                      color="blue",
+                                      y=240,
+                                      color=returnColor(returnedAns),
                                       fontSize=fontSize["mFont"])
 
                 if self.roundNum == 0: 
@@ -201,9 +216,17 @@ class lm4GUI():
                 # break
                 self.roundNum -= 1
                 i -= 1
+                if i == -1: 
+                    self.closeWin()
+                    break
+                
                 for k in self.textMsgBox:
                     k.undraw()
                 self.textMsgBox.clear()
+                # for m in self.inputBox: 
+                #     m.undraw()
+                self.inputBox.setText("")
+                self.checkAnsMsgBox.setText("")
                 finishAns = True
                 print("next button")
 
