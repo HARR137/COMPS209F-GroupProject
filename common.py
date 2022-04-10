@@ -23,7 +23,7 @@ def createImg(self, imgName, x, y):
 
 def createRectangle(self, **setting):
     # x, y, width, height
-    newRectangle = Rectangle(Point(setting["x"], setting["y"]), Point(setting["width"], setting["height"]))
+    newRectangle = Rectangle(Point(setting["starting_x"], setting["starting_y"]), Point(setting["ending_x"], setting["ending_y"]))
     newRectangle.setFill(setting["fillColor"])
     newRectangle.setOutline(setting["outlineColor"])
     newRectangle.draw(self.win)

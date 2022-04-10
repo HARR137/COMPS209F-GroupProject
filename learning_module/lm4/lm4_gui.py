@@ -1,17 +1,16 @@
 from hashlib import new
 from library.graphics import *
 from gobal_var import fontSize
-from common import createMsgBox, createInputBox, createRectangle
+from common import createMsgBox, createInputBox, createRectangle, createCircle
 from random import randrange, sample
 
 import learning_module.lm4.hints_gui as hints
-
-
 
 class lm4GUI():
     def __init__(self):
         self.randNumList = []
         self.roundNum = 5
+        self.checkEnterButton = False
         # self.value2
         # self.value3
         
@@ -21,47 +20,96 @@ class lm4GUI():
         self.winHeight = 500
 
         #ExitButton
-        self.exitButtonSize= { "width": 50, "height": 25 }
-        self.exitButtonCrood = { "x": 5, "y": 5 }
+        self.exitButtonSize = { "width": 50, "height": 25 }
+        self.exitButtonCrood = { "x": 5, "y": 50 }
         
         self.win = GraphWin('Learning Module 4', self.winWidth, self.winHeight)
-        self.exitButton = createRectangle(
-            self,
-            x = self.exitButtonCrood["x"],
-            y = self.exitButtonCrood["y"],
-            width = self.exitButtonSize["width"],
-            height = self.exitButtonSize["height"], 
-            fillColor = None, 
-            outlineColor = None
-        )
+
+        self.exitButtonSize = {"radius": 25}
+        self.exitButtonCrood = {"x": 5, "y": 5}
+        self.exitButton = createCircle(self,
+                                          x=self.exitButtonCrood["x"],
+                                          y=self.exitButtonCrood["y"],
+                                          radius=self.exitButtonSize["radius"], 
+                                          fillColor = "#C73618", 
+                                          outlineColor = "#C73618")
         self.exitButtonText = createMsgBox(
             self,
-            msg = "EXIT",
-            #+5 is a offset, since exitButton x,y crood is (5,5)
-            x = self.exitButtonSize["width"]/2+5,
-            y = self.exitButtonSize["height"]/2+5,
-            color = "black",
-            fontSize = fontSize["sFont"]
-        )
+            msg="x",
+            x=self.exitButtonCrood["x"] + 8.4, 
+            y=self.exitButtonCrood["y"] + 7.4, 
+            color="white",
+            fontSize=fontSize["mFont"])
         
+
+        self.gameBoxCrood = { "starting_x": 60, "starting_y": 50, "ending_x": 440, "ending_y": 200 }
         self.gameBox = createRectangle(
             self,
-            x = 60,
-            y = 50,
-            width = 440,
-            height = 200,
+            starting_x = self.gameBoxCrood["starting_x"],
+            starting_y = self.gameBoxCrood["starting_y"], 
+            ending_x = self.gameBoxCrood["ending_x"],
+            ending_y = self.gameBoxCrood["ending_y"],
             fillColor = None,
             outlineColor = None
         )
         self.gameBox.setFill("black")
+
+        self.inputBox = createInputBox(self, x=250, y=300, length=20)
+
         self.generateNumber()
 
 
-        self.inputBox = createInputBox(self, x=250, y=300, length=20)
-        # print(self.inputBox.getText())
+        
 
-        hintsModule = hints.hintsGui()
-        hintsModule.run()
+        # release it at the end! 
+        # hintsModule = hints.hintsGui()
+        # hintsModule.run()
+
+        # self.enterButtonSize = { "width": 50, "height": 25 }
+        # self.enterButtonCrood = { "x": 150, "y": 400 }
+
+
+        self.enterButtonCrood = { "starting_x": 115, "starting_y": 380, "ending_x": 215, "ending_y": 410 }
+        self.enterTextCrood = { "x": 165, "y": 395 }
+        self.enterButton = createRectangle(
+            self,
+            starting_x = self.enterButtonCrood["starting_x"],
+            starting_y = self.enterButtonCrood["starting_y"], 
+            ending_x = self.enterButtonCrood["ending_x"],
+            ending_y = self.enterButtonCrood["ending_y"],
+            fillColor = None, 
+            outlineColor = None
+        )
+        self.enterButtonText = createMsgBox(
+            self,
+            msg = "ENTER",
+            x = self.enterTextCrood["x"],
+            y = self.enterTextCrood["y"],
+            color = "black",
+            fontSize = fontSize["sFont"]
+        )
+
+
+        self.nextButtonCrood = { "starting_x": 285, "starting_y": 380, "ending_x": 385, "ending_y": 410 }
+        self.nextTextCrood = { "x": 335, "y": 395 }
+        self.enterButton = createRectangle(
+            self,
+            starting_x = self.nextButtonCrood["starting_x"],
+            starting_y = self.nextButtonCrood["starting_y"], 
+            ending_x = self.nextButtonCrood["ending_x"],
+            ending_y = self.nextButtonCrood["ending_y"],
+            fillColor = None, 
+            outlineColor = None
+        )
+        self.enterButtonText = createMsgBox(
+            self,
+            msg = "NEXT QUESTION",
+            x = self.nextTextCrood["x"],
+            y = self.nextTextCrood["y"],
+            color = "black",
+            fontSize = fontSize["sFont"]
+        )
+
 
         self.lm1OnClickHandler(self.win)
         return 80
@@ -75,40 +123,93 @@ class lm4GUI():
             self.randNumList.append(sample(range(1, 20), 5))
         print(self.randNumList)
 
+    def generateNumList(self, questions): 
+        margin = 55
+        for number in questions:
+            questionsSeperate = str(number) + " "
+            self.textMsgBox.append(createMsgBox(self,
+                        msg=questionsSeperate,
+                        x=90 + margin,
+                        y=120,
+                        color="white",
+                        fontSize=fontSize["xxxlFont"])
+                        )
+            margin = margin + 55
+
+    def getAns(self): 
+        userAns = []
+        userAns = self.inputBox.getText()
+        return userAns
+
+    def checkAns(self, question): 
+        correctAns = []
+        correctAns = question.sort()
+        returnUserAns = self.getAns()
+        if correctAns == returnUserAns: 
+            return "Correct!"
+        else: 
+            return "Wrong!"
 
     def lm1OnClickHandler(self, win):
-        i = 0
-        while self.roundNum:
-            questions = self.randNumList[i]
+        i = 4
+        finishAns = True
+        self.textMsgBox = []
+        # self.roundNum = 5
+        while True:
 
-            margin = 50
-            for number in questions:
-                questionsSeperate = str(number) + " "
-                createMsgBox(self,
-                            msg=questionsSeperate,
-                            x=90 + margin,
-                            y=120,
-                            color="white",
-                            fontSize=fontSize["xxxlFont"])
-                margin = margin + 100
-            i += 1
+            if finishAns: 
+                #start of printing questions--------
+                questions = self.randNumList[i]
 
-        
-        #just finish looping the first questions's digit to the screen
-        #On user click enter / nexr questions, check answer and then show correct or wrong -> next question ->  self.roundNum--
-        #and then draw an other questions
+                self.generateNumList(questions)
+                #End of printing questions--------
 
+                #load the next 5 int in the randNumList
+                finishAns = False
 
 
             checkMouse = win.getMouse()
             targetX = checkMouse.getX()
             targetY = checkMouse.getY()
-            #ending part
-            self.roundNum -= 1
+        
+        #just finish looping the first questions's digit to the screen
+        #On user click enter / nexr questions, check answer and then show correct or wrong -> next question ->  self.roundNum--
+        #and then draw an other questions
+
+            # enterButton onClick
+            if targetX >= self.enterButtonCrood["starting_x"] and targetX <= self.enterButtonCrood["ending_x"] and targetY >= self.enterButtonCrood["starting_y"] and targetY <= self.enterButtonCrood["ending_y"]:
+                self.checkEnterButton = True
+                self.getAns()
+                self.checkAnsMsgBox = createMsgBox(self,
+                                      msg=self.checkAns(questions),
+                                      x=250,
+                                      y=250,
+                                      color="blue",
+                                      fontSize=fontSize["mFont"])
+
+                if self.roundNum == 0: 
+                    self.win.close()
+                    break
+                # self.enterAns()
+                # break
+                print("enter button")
+
+            # nextButton onClick
+            if self.checkEnterButton == True and targetX >= self.nextButtonCrood["starting_x"] and targetX <= self.nextButtonCrood["ending_x"] and targetY >= self.nextButtonCrood["starting_y"] and targetY <= self.nextButtonCrood["ending_y"]:
+                self.checkEnterButton = False
+                # self.nextQue()
+                # break
+                self.roundNum -= 1
+                i -= 1
+                for k in self.textMsgBox:
+                    k.undraw()
+                self.textMsgBox.clear()
+                finishAns = True
+                print("next button")
 
 
-            
-            if targetX >= self.exitButtonCrood["x"]  and targetX <= self.exitButtonCrood["x"] + self.exitButtonSize["width"] and targetY >= self.exitButtonCrood["y"] and targetY <= self.exitButtonCrood["y"] + self.exitButtonSize["height"] :
+           # exitButton onClick
+            if targetX >= self.exitButtonCrood["x"] - self.exitButtonSize["radius"] and targetX <= self.exitButtonCrood["x"] + self.exitButtonSize["radius"] and targetY >= self.exitButtonCrood["y"] - self.exitButtonSize["radius"] and targetY <= self.exitButtonCrood["y"] + self.exitButtonSize["radius"]:
                 self.closeWin()
                 break
-                
+                    
