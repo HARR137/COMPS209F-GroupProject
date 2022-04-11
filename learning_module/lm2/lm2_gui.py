@@ -36,31 +36,7 @@ class lm2GUI():
         self.attempt = 0  # how many questions answers
         self.max_attempt = 5  # how many questions total
 
-
-        #ExitButton
-        self.exitButtonSize= { "width": 50, "height": 25 }
-        self.exitButtonCrood = { "x": 5, "y": 5 }
-
         self.win = GraphWin('Learning Module 2 - Larger or Smaller?', self.winWidth, self.winHeight)
-
-        #ExitButton
-        self.exitButtonSize = { "width": 50, "height": 25 }
-        self.exitButtonCrood = { "x": 5, "y": 50 }
-        self.exitButtonSize = {"radius": 25}
-        self.exitButtonCrood = {"x": 5, "y": 5}
-        self.exitButton = createCircle(self,
-                                          x=self.exitButtonCrood["x"],
-                                          y=self.exitButtonCrood["y"],
-                                          radius=self.exitButtonSize["radius"], 
-                                          fillColor = "#C73618", 
-                                          outlineColor = "#C73618")
-        self.exitButtonText = createMsgBox(
-            self,
-            msg="x",
-            x=self.exitButtonCrood["x"] + 8.4, 
-            y=self.exitButtonCrood["y"] + 7.4, 
-            color="white",
-            fontSize=fontSize["mFont"])
 
         MsgBox = Text(Point(250, 150), "Which symbol should be filled in the middle (Enter > / <)")
         MsgBox.draw(self.win)
@@ -73,6 +49,26 @@ class lm2GUI():
         while True:
             if self.attempt >= self.max_attempt:  # finished all attempts
                 self.updateResult('Completed. Your score is {}/{}'.format(self.score, self.attempt))
+
+                # #ExitButton
+                self.exitButtonSize = { "width": 50, "height": 25 }
+                self.exitButtonCrood = { "x": 5, "y": 50 }
+                self.exitButtonSize = {"radius": 25}
+                self.exitButtonCrood = {"x": 5, "y": 5}
+                self.exitButton = createCircle(self,
+                                                  x=self.exitButtonCrood["x"],
+                                                  y=self.exitButtonCrood["y"],
+                                                  radius=self.exitButtonSize["radius"], 
+                                                  fillColor = "#C73618", 
+                                                  outlineColor = "#C73618")
+                self.exitButtonText = createMsgBox(
+                    self,
+                    msg="x",
+                    x=self.exitButtonCrood["x"] + 8.4, 
+                    y=self.exitButtonCrood["y"] + 7.4, 
+                    color="white",
+                    fontSize=fontSize["mFont"])
+                    
                 break
 
             self.question = genQuestion()
