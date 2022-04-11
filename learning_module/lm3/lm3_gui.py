@@ -16,8 +16,8 @@ class lm3GUI():
         
         
     def run(self):
-        self.winWidth = 500
-        self.winHeight = 500
+        self.winWidth = 700
+        self.winHeight = 700
 
         self.win = GraphWin('Learning Module 3 - Add and Substract', self.winWidth, self.winHeight)
 
@@ -40,8 +40,8 @@ class lm3GUI():
             color="white",
             fontSize=fontSize["mFont"])
 
-        self.enterButtonCrood = { "starting_x": 115, "starting_y": 380, "ending_x": 215, "ending_y": 410 }
-        self.enterTextCrood = { "x": 165, "y": 395 }
+        self.enterButtonCrood = { "starting_x": 215, "starting_y": 380, "ending_x": 315, "ending_y": 410 }
+        self.enterTextCrood = { "x": 265, "y": 395 }
         self.enterButton = createRectangle(
             self,
             starting_x = self.enterButtonCrood["starting_x"],
@@ -61,8 +61,8 @@ class lm3GUI():
         )
 
 
-        self.nextButtonCrood = { "starting_x": 285, "starting_y": 380, "ending_x": 385, "ending_y": 410 }
-        self.nextTextCrood = { "x": 335, "y": 395 }
+        self.nextButtonCrood = { "starting_x": 385, "starting_y": 380, "ending_x": 485, "ending_y": 410 }
+        self.nextTextCrood = { "x": 435, "y": 395 }
         self.nextButton = createRectangle(
             self,
             starting_x = self.nextButtonCrood["starting_x"],
@@ -81,7 +81,7 @@ class lm3GUI():
             fontSize = fontSize["sFont"]
         )
 
-        self.inputBox = createInputBox(self, x=250, y=300, length=20)
+        self.inputBox = createInputBox(self, x=350, y=300, length=20)
 
         
         self.generateQuestions()
@@ -142,7 +142,7 @@ class lm3GUI():
         self.currentTitle =  createMsgBox(
                                     self,
                                     msg="Question " + str(index+1) + " / 5",
-                                    x=250 ,
+                                    x=350 ,
                                     y=100,
                                     color="black",
                                     fontSize=fontSize["xxlFont"]
@@ -151,7 +151,7 @@ class lm3GUI():
         self.currentQuestion =  createMsgBox(
                                     self,
                                     msg=self.questions[index],
-                                    x=250 ,
+                                    x=350 ,
                                     y=150,
                                     color="black",
                                     fontSize=fontSize["xxlFont"]
@@ -182,7 +182,7 @@ class lm3GUI():
                 self.correctOrNot = createMsgBox(
                             self,
                             msg=resultMessage(checkedAnswer),
-                            x=250 ,
+                            x=350 ,
                             y=250,
                             color=resultMessageColor(checkedAnswer),
                             fontSize=fontSize["lFont"]
