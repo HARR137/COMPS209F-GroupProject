@@ -1,23 +1,19 @@
 from library.graphics import *
 from gobal_var import fontSize
 import random
-from common import createMsgBox, createImg, createRectangle, createCircle
+from common import createMsgBox, createCircle
 
-
-MSG_1 = "Correct answer. Well done! Keep going!"
-MSG_2 = "Wrong answer. Add oil!"
-MSG_3 = ""
 
 
 
 def checkAnswer(randnum, ans):
-    if (randnum % 2 == 0) and (ans == "Odd"):
+    if (randnum % 2 == 0) and (ans == "odd"):
         Correct = False
-    elif (randnum % 2 != 0) and (ans == "Odd"):
+    elif (randnum % 2 != 0) and (ans == "odd"):
         Correct = True
-    elif (randnum % 2 != 0) and (ans == "Even"):
+    elif (randnum % 2 != 0) and (ans == "even"):
         Correct = False
-    elif (randnum % 2 == 0) and (ans == "Even"):
+    elif (randnum % 2 == 0) and (ans == "even"):
         Correct = True
     else:
         return None # invalid input
@@ -32,11 +28,18 @@ class lm1GUI():
         self.winHeight = 500
         self.score = 0  # initialize score to 0
         self.attempt = 0  # how many questions answers
-        self.max_attempt = 3  # how many questions total
+        self.max_attempt = 5  # how many questions total
 
-        self.win = GraphWin('Learning Module 1', self.winWidth, self.winHeight)
 
         #ExitButton
+        self.exitButtonSize= { "width": 50, "height": 25 }
+        self.exitButtonCrood = { "x": 5, "y": 5 }
+
+        self.win = GraphWin('Learning Module 1 - Odd or Even?', self.winWidth, self.winHeight)
+
+        # #ExitButton
+        self.exitButtonSize = { "width": 50, "height": 25 }
+        self.exitButtonCrood = { "x": 5, "y": 50 }
         self.exitButtonSize = {"radius": 25}
         self.exitButtonCrood = {"x": 5, "y": 5}
         self.exitButton = createCircle(self,
@@ -53,12 +56,11 @@ class lm1GUI():
             color="white",
             fontSize=fontSize["mFont"])
 
-
-        MsgBox = Text(Point(250, 150), "This number is an odd or evne number? (Enter Odd / Even)")
+        MsgBox = Text(Point(250, 150), "Is this number odd or even? (Enter odd / even)")
         MsgBox.draw(self.win)
 
-        StatusBox = Text(Point(250, 240), "")
-        StatusBox.draw(self.win)
+        theStatusBox = Text(Point(250, 240), "")
+        theStatusBox.draw(self.win)
 
 
         while True:
@@ -70,37 +72,23 @@ class lm1GUI():
             QuestionBox = Text(Point(250, 180), random.randint(1, 10))
             QuestionBox.draw(self.win)
             randnum = QuestionBox.getText()
-            self.updateStatus("")
             while True:
                 ans = self.waitGetInput()
                 Correct = checkAnswer(randnum, ans)
                 if Correct == True:
-                     self.updateStatus(MSG_1)
                      self.score += 1
                      self.attempt += 1
                      QuestionBox.setText("")
-                else:
-                     self.updateStatus(MSG_2)
+                     theStatusBox.setText("")
+                     theStatusBox.setText("Correct! Keep going")
+                else: 
                      self.attempt += 1
                      QuestionBox.setText("")
+                     theStatusBox.setText("")
+                     theStatusBox.setText("Wrong! Add oil")
                 break
                   
-        #ExitButton
-        self.exitButtonSize = {"radius": 25}
-        self.exitButtonCrood = {"x": 5, "y": 5}
-        self.exitButton = createCircle(self,
-                                          x=self.exitButtonCrood["x"],
-                                          y=self.exitButtonCrood["y"],
-                                          radius=self.exitButtonSize["radius"], 
-                                          fillColor = "#C73618", 
-                                          outlineColor = "#C73618")
-        self.exitButtonText = createMsgBox(
-            self,
-            msg="x",
-            x=self.exitButtonCrood["x"] + 8.4, 
-            y=self.exitButtonCrood["y"] + 7.4, 
-            color="white",
-            fontSize=fontSize["mFont"])
+
         self.lm1OnClickHandler(self.win)
         return self.score
 
@@ -108,10 +96,6 @@ class lm1GUI():
     def closeWin(self):
         self.win.close()
 
-    def updateStatus(self, text):
-        StatusBox = Text(Point(250, 240), "")
-        StatusBox.draw(self.win)
-        StatusBox.setText(text)
 
     def updateResult(self, text):
         resultBox = Text(Point(250, 270), "")

@@ -23,7 +23,7 @@ class lm3GUI():
         self.exitButtonSize= { "width": 50, "height": 25 }
         self.exitButtonCrood = { "x": 5, "y": 5 }
 
-        self.win = GraphWin('Learning Module 3', self.winWidth, self.winHeight)
+        self.win = GraphWin('Learning Module 3 - Add and Substract', self.winWidth, self.winHeight)
         self.exitButton = createRectangle(
             self,
             starting_x = self.exitButtonCrood["x"],
@@ -143,7 +143,7 @@ class lm3GUI():
         print(self.questions)
         self.currentTitle =  createMsgBox(
                                     self,
-                                    msg="Question" + str(index+1),
+                                    msg="Question " + str(index+1) + " / 5",
                                     x=250 ,
                                     y=100,
                                     color="black",

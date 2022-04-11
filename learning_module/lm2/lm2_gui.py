@@ -1,34 +1,29 @@
 from library.graphics import *
 from gobal_var import fontSize
 import random
-from common import createMsgBox, createImg, createRectangle, createCircle
+from common import createMsgBox, createCircle
 
-
-MSG_1 = "Correct answer. Well done! Keep going!"
-MSG_2 = "Wrong answer. Add oil!"
-MSG_3 = ""
 
 
 
 def checkAnswer(a, b, ans):
-    print(a, b, ans)
-    if (a > b) and (ans == a):
-        Correctans = a
-    elif (a > b) and (ans == b):
-        Correctans = a
-    elif (a < b) and (ans == a):
-        Correctans = b
-    elif (a < b) and (ans == b):
-        Correctans = b
+    if (a > b) and (ans == ">"):
+        Correctans = True
+    elif (a > b) and (ans == "<"):
+        Correctans = False
+    elif (a < b) and (ans == "<"):
+        Correctans = True
+    elif (a < b) and (ans == ">"):
+        Correctans = False
     else:
         return None # invalid input
-    theGrade = Correctans == ans
+    theGrade = Correctans
     return theGrade
 
 def genQuestion():
-    a = random.randint(1, 10)
-    b = random.randint(1, 10)
-    return (a, b)
+    randnum = random.sample(range(10), 2)
+    return randnum
+
 
 class lm2GUI():
     def __init__(self):
@@ -39,11 +34,18 @@ class lm2GUI():
         self.winHeight = 500
         self.score = 0  # initialize score to 0
         self.attempt = 0  # how many questions answers
-        self.max_attempt = 3  # how many questions total
+        self.max_attempt = 5  # how many questions total
 
-        self.win = GraphWin('Learning Module 2', self.winWidth, self.winHeight)
 
         #ExitButton
+        self.exitButtonSize= { "width": 50, "height": 25 }
+        self.exitButtonCrood = { "x": 5, "y": 5 }
+
+        self.win = GraphWin('Learning Module 2 - Larger or Smaller?', self.winWidth, self.winHeight)
+
+        #ExitButton
+        self.exitButtonSize = { "width": 50, "height": 25 }
+        self.exitButtonCrood = { "x": 5, "y": 50 }
         self.exitButtonSize = {"radius": 25}
         self.exitButtonCrood = {"x": 5, "y": 5}
         self.exitButton = createCircle(self,
@@ -60,11 +62,12 @@ class lm2GUI():
             color="white",
             fontSize=fontSize["mFont"])
 
-        MsgBox = Text(Point(250, 150), "Which number is bigger")
+        MsgBox = Text(Point(250, 150), "Which symbol should be filled in the middle (Enter > / <)")
         MsgBox.draw(self.win)
 
-        StatusBox = Text(Point(250, 240), "")
-        StatusBox.draw(self.win)
+        theStatusBox = Text(Point(250, 240), "")
+        theStatusBox.draw(self.win)
+
 
 
         while True:
@@ -78,49 +81,28 @@ class lm2GUI():
             QuestionBox.draw(self.win)
             a = self.question[0]
             b = self.question[1]
-            self.updateStatus("")
             while True:
                 ans = self.waitGetInput()
                 theGrade = checkAnswer(a, b, ans)
                 if theGrade == True:
-                     self.updateStatus(MSG_1)
                      self.score += 1
                      self.attempt += 1
                      QuestionBox.setText("")
+                     theStatusBox.setText("")
+                     theStatusBox.setText("Correct! Keep going")
                 else:
-                     self.updateStatus(MSG_2)
                      self.attempt += 1
                      QuestionBox.setText("")
+                     theStatusBox.setText("")
+                     theStatusBox.setText("Wrong! Add oil")
                 break
                   
-
-        self.exitButtonSize = {"radius": 25}
-        self.exitButtonCrood = {"x": 5, "y": 5}
-        self.exitButton = createCircle(self,
-                                          x=self.exitButtonCrood["x"],
-                                          y=self.exitButtonCrood["y"],
-                                          radius=self.exitButtonSize["radius"], 
-                                          fillColor = "#C73618", 
-                                          outlineColor = "#C73618")
-        self.exitButtonText = createMsgBox(
-            self,
-            msg="x",
-            x=self.exitButtonCrood["x"] + 8.4, 
-            y=self.exitButtonCrood["y"] + 7.4, 
-            color="white",
-            fontSize=fontSize["mFont"])
-
         self.lm1OnClickHandler(self.win)
         return self.score
 
 
     def closeWin(self):
         self.win.close()
-
-    def updateStatus(self, text):
-        StatusBox = Text(Point(250, 240), "")
-        StatusBox.draw(self.win)
-        StatusBox.setText(text)
 
     def updateResult(self, text):
         resultBox = Text(Point(250, 270), "")
@@ -134,8 +116,7 @@ class lm2GUI():
         self.win.getMouse()
         ans = inputbox.getText()
         try: 
-            ans_int = int(ans)
-            return ans_int
+            return ans
         except ValueError:
             pass
         return None

@@ -17,7 +17,7 @@ class lm4GUI():
     def run(self):
         self.winWidth = 500
         self.winHeight = 500
-        self.win = GraphWin('Learning Module 4', self.winWidth, self.winHeight)
+        self.win = GraphWin('Learning Module 4 - Number Ordering', self.winWidth, self.winHeight)
         # self.win.setBackground("#161616")
 
         #ExitButton

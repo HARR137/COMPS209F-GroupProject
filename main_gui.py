@@ -69,13 +69,13 @@ class MainGUI:
         self.lm1Img = createImg(self, "resources/img/o-or-e.png",
                                 self.lmCrood1["x"], self.lmCrood1["y"])
         self.lm1LatestScoreBoard = createMsgBox(self, 
-                                            msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]) + " / 3",
+                                            msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]) + " / 5",
                                             x = 104, 
                                             y = 200, 
                                             color = "#F5CEC7", 
                                             fontSize=fontSize["sFont"])
         self.lm1BestScoreBoard = createMsgBox(self, 
-                                            msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]) + " / 3", 
+                                            msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]) + " / 5", 
                                             x = 104, 
                                             y = 215, 
                                             color = "#FFE284", 
@@ -88,16 +88,16 @@ class MainGUI:
                                       y=100,
                                       color="white",
                                       fontSize=fontSize["mFont"])
-        self.lm2Img = createImg(self, "resources/img/bigger.png",
+        self.lm2Img = createImg(self, "resources/img/l-or-s.png",
                                 self.lmCrood2["x"], self.lmCrood2["y"])
         self.lm2LatestScoreBoard = createMsgBox(self, 
-                                            msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]) + " / 3",
+                                            msg = "Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]) + " / 5",
                                             x = 304, 
                                             y = 200, 
                                             color = "#F5CEC7", 
                                             fontSize=fontSize["sFont"])
         self.lm2BestScoreBoard = createMsgBox(self, 
-                                            msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]) + " / 3", 
+                                            msg = "Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]) + " / 5", 
                                             x = 304, 
                                             y = 215, 
                                             color = "#FFE284", 
@@ -190,8 +190,8 @@ class MainGUI:
                 print("We click learning module 1 !!")
                 learn_module1 = lm1_gui.lm1GUI()
                 self.scoreboard.saveScore( {"latestScore": {"lm1": learn_module1.run()}} )
-                self.lm1LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]) + " / 3")
-                self.lm1BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]) + " / 3")
+                self.lm1LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]) + " / 5")
+                self.lm1BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]) + " / 5")
                 # self.scoreboard.loadFromFile()
 
             #Learning module 2 onLick handling condition
@@ -199,8 +199,8 @@ class MainGUI:
                 print("We click learning module 2 !!")
                 learn_module2 = lm2_gui.lm2GUI()
                 self.scoreboard.saveScore( {"latestScore": {"lm2": learn_module2.run()}} )
-                self.lm2LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]) + " / 3")
-                self.lm2BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]) + " / 3")
+                self.lm2LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]) + " / 5")
+                self.lm2BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]) + " / 5")
 
             #Learning module 3 onLick handling condition
             if targetX >= self.lmCrood3["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood3["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood3["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood3["y"] + lmGifSize["height"] / 2:
@@ -221,10 +221,10 @@ class MainGUI:
             #resetButton onLick handling condition
             if targetX >= self.resetButtonCrood["x"] - self.resetButtonSize["radius"] and targetX <= self.resetButtonCrood["x"] + self.resetButtonSize["radius"] and targetY >= self.resetButtonCrood["y"] - self.resetButtonSize["radius"] and targetY <= self.resetButtonCrood["y"] + self.resetButtonSize["radius"]:
                 self.scoreboard.resetScore()
-                self.lm1LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]) + " / 3")
-                self.lm1BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]) + " / 3")
-                self.lm2LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]) + " / 3")
-                self.lm2BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]) + " / 3")
+                self.lm1LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]) + " / 5")
+                self.lm1BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]) + " / 5")
+                self.lm2LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]) + " / 5")
+                self.lm2BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]) + " / 5")
                 self.lm3LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["latest"]) + " / 5")
                 self.lm3BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["best"]) + " / 5")
                 self.lm4LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]) + " / 5")
