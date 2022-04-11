@@ -44,6 +44,8 @@ class lm2GUI():
         theStatusBox = Text(Point(250, 240), "")
         theStatusBox.draw(self.win)
 
+        nextInstructionBox = Text(Point(250, 450), "(click anywhere on this page to submit answer)")
+        nextInstructionBox.draw(self.win)
 
 
         while True:
@@ -68,7 +70,7 @@ class lm2GUI():
                     y=self.exitButtonCrood["y"] + 7.4, 
                     color="white",
                     fontSize=fontSize["mFont"])
-                    
+
                 break
 
             self.question = genQuestion()
