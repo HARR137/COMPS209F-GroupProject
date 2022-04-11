@@ -4,8 +4,6 @@ import random
 from common import createMsgBox, createCircle
 
 
-
-
 def checkAnswer(a, b, ans):
     if (a > b) and (ans == ">"):
         Correctans = True
@@ -20,6 +18,7 @@ def checkAnswer(a, b, ans):
     theGrade = Correctans
     return theGrade
 
+
 def genQuestion():
     randnum = random.sample(range(10), 2)
     return randnum
@@ -28,6 +27,7 @@ def genQuestion():
 class lm2GUI():
     def __init__(self):
         pass
+
 
     def run(self):
         self.winWidth = 500
@@ -51,7 +51,6 @@ class lm2GUI():
         while True:
             if self.attempt >= self.max_attempt:  # finished all attempts
                 self.updateResult('Completed. Your score is {}/{}'.format(self.score, self.attempt))
-
                 # #ExitButton
                 self.exitButtonSize = { "width": 50, "height": 25 }
                 self.exitButtonCrood = { "x": 5, "y": 50 }
@@ -70,7 +69,6 @@ class lm2GUI():
                     y=self.exitButtonCrood["y"] + 7.4, 
                     color="white",
                     fontSize=fontSize["mFont"])
-
                 break
 
             self.question = genQuestion()
@@ -102,6 +100,7 @@ class lm2GUI():
     def closeWin(self):
         self.win.close()
 
+
     def updateResult(self, text):
         resultBox = Text(Point(250, 270), "")
         resultBox.draw(self.win)
@@ -119,6 +118,7 @@ class lm2GUI():
             pass
         return None
 
+
     def lm1OnClickHandler(self, win):
         while True:
             checkMouse = win.getMouse()
@@ -128,8 +128,7 @@ class lm2GUI():
             if targetX >= self.exitButtonCrood["x"] - self.exitButtonSize["radius"] and targetX <= self.exitButtonCrood["x"] + self.exitButtonSize["radius"] and targetY >= self.exitButtonCrood["y"] - self.exitButtonSize["radius"] and targetY <= self.exitButtonCrood["y"] + self.exitButtonSize["radius"]:
                 self.closeWin()
                 break
-
-                    
+    
 
 if __name__ == "__main__":
     lm2_GUI = lm2GUI()

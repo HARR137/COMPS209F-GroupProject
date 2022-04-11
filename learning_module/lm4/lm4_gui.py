@@ -6,6 +6,7 @@ from random import randrange, sample
 
 import learning_module.lm4.hints_gui as hints
 
+
 class lm4GUI():
     def __init__(self):
         self.randNumList = []
@@ -13,14 +14,13 @@ class lm4GUI():
         self.checkEnterButton = False
         self.score = 0
         
-        
+
     def run(self):
         self.winWidth = 500
         self.winHeight = 500
         self.win = GraphWin('Learning Module 4 - Number Ordering', self.winWidth, self.winHeight)
-        # self.win.setBackground("#161616")
 
-        #ExitButton
+        # exit button
         self.exitButtonSize = { "width": 50, "height": 25 }
         self.exitButtonCrood = { "x": 5, "y": 50 }
         self.exitButtonSize = {"radius": 25}
@@ -39,7 +39,7 @@ class lm4GUI():
             color="white",
             fontSize=fontSize["mFont"])
         
-
+        # game box in black
         self.gameBoxCrood = { "starting_x": 60, "starting_y": 50, "ending_x": 440, "ending_y": 200 }
         self.gameBox = createRectangle(
             self,
@@ -52,17 +52,16 @@ class lm4GUI():
         )
         self.gameBox.setFill("black")
 
+        # answer input box
         self.inputBox = createInputBox(self, x=250, y=300, length=20)
 
         self.generateNumber()
 
+        # game instruction
         hintsModule = hints.hintsGui()
         hintsModule.run()
 
-        # self.enterButtonSize = { "width": 50, "height": 25 }
-        # self.enterButtonCrood = { "x": 150, "y": 400 }
-
-
+        # enter button
         self.enterButtonCrood = { "starting_x": 115, "starting_y": 380, "ending_x": 215, "ending_y": 410 }
         self.enterTextCrood = { "x": 165, "y": 395 }
         self.enterButton = createRectangle(
@@ -83,7 +82,7 @@ class lm4GUI():
             fontSize = fontSize["sFont"]
         )
 
-
+        # next question button
         self.nextButtonCrood = { "starting_x": 285, "starting_y": 380, "ending_x": 385, "ending_y": 410 }
         self.nextTextCrood = { "x": 335, "y": 395 }
         self.nextButton = createRectangle(
@@ -104,19 +103,21 @@ class lm4GUI():
             fontSize = fontSize["sFont"]
         )
 
-
         self.lm1OnClickHandler(self.win)
 
         return self.score
+
 
     def closeWin(self):
         self.win.close()
 
 
+    # gen 5 numbers
     def generateNumber(self):
         for j in range(self.roundNum): 
             self.randNumList.append(sample(range(1, 20), 5))
         print(self.randNumList)
+
 
     def generateNumList(self, questions): 
         margin = 55
@@ -131,9 +132,11 @@ class lm4GUI():
                         )
             margin = margin + 55
 
+
     def getAns(self): 
         userAns = self.inputBox.getText()
         return list(eval(userAns))
+
 
     def checkAns(self, question): 
         returnUserAns = self.getAns()
@@ -146,39 +149,29 @@ class lm4GUI():
             return False
         
 
-        # if question == returnUserAns: 
-        #     return "Very good! It's correct!"
-        # else: 
-        #     return "Wrong answer... Practice makes perfect!"
-
     def lm1OnClickHandler(self, win):
         i = 4
         finishAns = True
         self.textMsgBox = []
-        # self.roundNum = 5
+
         while True:
 
             if finishAns: 
-                #start of printing questions--------
+                # start of printing questions--------
 
                 questions = self.randNumList[i]
 
                 self.generateNumList(questions)
-                #End of printing questions--------
 
-                #load the next 5 int in the randNumList
+                # end of printing questions--------
+
                 finishAns = False
-
 
             checkMouse = win.getMouse()
             targetX = checkMouse.getX()
             targetY = checkMouse.getY()
         
-        #just finish looping the first questions's digit to the screen
-        #On user click enter / nexr questions, check answer and then show correct or wrong -> next question ->  self.roundNum--
-        #and then draw an other questions
-
-            # enterButton onClick
+            # enter button onClick
             if targetX >= self.enterButtonCrood["starting_x"] and targetX <= self.enterButtonCrood["ending_x"] and targetY >= self.enterButtonCrood["starting_y"] and targetY <= self.enterButtonCrood["ending_y"]:
                 self.checkEnterButton = True
                 self.getAns()
@@ -190,7 +183,6 @@ class lm4GUI():
 
                 self.checkAnsMsgBox = createMsgBox(self,
                                       msg=returnMsg(returnedAns),
-                                    #   msg=self.checkAns(questions),
                                       x=250,
                                       y=240,
                                       color=returnColor(returnedAns),
@@ -199,15 +191,12 @@ class lm4GUI():
                 if self.roundNum == 0: 
                     self.win.close()
                     break
-                # self.enterAns()
-                # break
+
                 print("enter button")
 
-            # nextButton onClick
+            # next question button onClick
             if self.checkEnterButton == True and targetX >= self.nextButtonCrood["starting_x"] and targetX <= self.nextButtonCrood["ending_x"] and targetY >= self.nextButtonCrood["starting_y"] and targetY <= self.nextButtonCrood["ending_y"]:
                 self.checkEnterButton = False
-                # self.nextQue()
-                # break
                 self.roundNum -= 1
                 i -= 1
                 if i == -1: 
@@ -224,8 +213,7 @@ class lm4GUI():
                 finishAns = True
                 print("next button")
 
-
-           # exitButton onClick
+           # exit button onClick
             if targetX >= self.exitButtonCrood["x"] - self.exitButtonSize["radius"] and targetX <= self.exitButtonCrood["x"] + self.exitButtonSize["radius"] and targetY >= self.exitButtonCrood["y"] - self.exitButtonSize["radius"] and targetY <= self.exitButtonCrood["y"] + self.exitButtonSize["radius"]:
                 self.closeWin()
                 break

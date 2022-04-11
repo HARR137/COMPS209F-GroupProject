@@ -9,6 +9,7 @@ import learning_module.lm4.lm4_gui as lm4_gui
 
 import scoreboard as sb
 
+
 class MainGUI:
     def __init__(self):
 
@@ -29,7 +30,7 @@ class MainGUI:
         self.lmCrood3 = {"x": row1X, "y": col1Y + margin}
         self.lmCrood4 = {"x": row1X + margin, "y": col1Y + margin}
 
-        #Homepage Header
+        # momepage header
         createMsgBox(self,
                      msg="Math Learning Module",
                      x=208,
@@ -37,12 +38,7 @@ class MainGUI:
                      color="white",
                      fontSize=fontSize["xlFont"])  
 
-        # self.headerCrood = {"x": 208, "y": 30}    
-        # self.headerImg = createImg(self, "resources/img/m-l-m.png",
-        #                         self.headerCrood["x"], self.headerCrood["y"])   
-
-
-        #Exit Main Program Button
+        # exit main program button
         self.exitButtonSize = {"radius": 25}
         self.exitButtonCrood = {"x": 5, "y": 5}
         self.exitButton = createCircle(self,
@@ -59,7 +55,7 @@ class MainGUI:
             color="white",
             fontSize=fontSize["mFont"])
 
-        #Learning Moduel 1
+        # learning module 1
         self.lm1MsgBox = createMsgBox(self,
                                       msg="Learning Module 1",
                                       x=104,
@@ -81,7 +77,7 @@ class MainGUI:
                                             color = "#FFE284", 
                                             fontSize=fontSize["sFont"])
 
-        #Learning Moduel 2
+        # learning module 2
         self.lm2MsgBox = createMsgBox(self,
                                       msg="Learning Module 2",
                                       x=304,
@@ -103,7 +99,7 @@ class MainGUI:
                                             color = "#FFE284", 
                                             fontSize=fontSize["sFont"])
 
-        #Learning Moduel 3
+        # learning module 3
         self.lm3MsgBox = createMsgBox(self,
                                       msg="Learning Module 3",
                                       x=104,
@@ -125,7 +121,7 @@ class MainGUI:
                                             color = "#FFE284", 
                                             fontSize=fontSize["sFont"])
 
-        #Learning Moduel 4
+        # learning module 4
         self.lm4MsgBox = createMsgBox(self,
                                       msg="Learning Module 4",
                                       x=304,
@@ -147,6 +143,7 @@ class MainGUI:
                                             color = "#FFE284", 
                                             fontSize=fontSize["sFont"])
 
+        # instruction text msg
         createMsgBox(self, 
                      msg = "↑   Click Image to Start   ↑", 
                      x = 208, 
@@ -154,6 +151,7 @@ class MainGUI:
                      color = "#CDB3D4", 
                      fontSize=fontSize["sFont"])
 
+        # reset all score button
         self.resetButtonSize = {"radius": 30}
         self.resetButtonCrood = {"x": 208, "y": 650}
         self.resetButton = createCircle(self,
@@ -165,16 +163,18 @@ class MainGUI:
         self.resetButtonText = createMsgBox(
             self,
             msg="Reset\nAll Score",
-            x=self.resetButtonCrood["x"] + 1.3, # fix center problem
+            x=self.resetButtonCrood["x"] + 1.3, # fixed center problem
             y=self.resetButtonCrood["y"],
             color="white",
             fontSize=fontSize["sFont"])
 
-        #learning module onclick handler:
+        # learning module onclick handler
         self.homeComponentOnClickHandler()
+
 
     def closeWin(self):
         self.win.close()
+
 
     def homeComponentOnClickHandler(self):
         print("Just get in homeComponentOnClickHandler")
@@ -185,7 +185,7 @@ class MainGUI:
             print("User click sth !")
             print("User click X: ", targetX, "and Y :", targetY )
 
-            #Learning module 1 onLick handling condition
+            # learning module 1 onClick handling condition
             if targetX >= self.lmCrood1["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood1["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood1["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood1["y"] + lmGifSize["height"] / 2:
                 print("We click learning module 1 !!")
                 learn_module1 = lm1_gui.lm1GUI()
@@ -194,7 +194,7 @@ class MainGUI:
                 self.lm1BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["best"]) + " / 5")
                 # self.scoreboard.loadFromFile()
 
-            #Learning module 2 onLick handling condition
+            # learning module 2 onClick handling condition
             if targetX >= self.lmCrood2["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood2["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood2["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood2["y"] + lmGifSize["height"] / 2:
                 print("We click learning module 2 !!")
                 learn_module2 = lm2_gui.lm2GUI()
@@ -202,7 +202,7 @@ class MainGUI:
                 self.lm2LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["latest"]) + " / 5")
                 self.lm2BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm2")["best"]) + " / 5")
 
-            #Learning module 3 onLick handling condition
+            # learning module 3 onClick handling condition
             if targetX >= self.lmCrood3["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood3["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood3["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood3["y"] + lmGifSize["height"] / 2:
                 print("We click learning module 3 !!")
                 learn_module3 = lm3_gui.lm3GUI()
@@ -210,7 +210,7 @@ class MainGUI:
                 self.lm3LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["latest"]) + " / 5")
                 self.lm3BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm3")["best"]) + " / 5")
 
-            #Learning module 4 onLick handling condition
+            # learning module 4 onClick handling condition
             if targetX >= self.lmCrood4["x"] - lmGifSize["width"] / 2 and targetX <= self.lmCrood4["x"] + lmGifSize["width"] / 2 and targetY >= self.lmCrood4["y"] - lmGifSize["height"] / 2 and targetY <= self.lmCrood4["y"] + lmGifSize["height"] / 2:
                 print("We click learning module 4 !!")
                 learn_module4 = lm4_gui.lm4GUI()
@@ -218,7 +218,7 @@ class MainGUI:
                 self.lm4LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]) + " / 5")
                 self.lm4BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["best"]) + " / 5")
 
-            #resetButton onLick handling condition
+            # reset all score button onClick handling condition
             if targetX >= self.resetButtonCrood["x"] - self.resetButtonSize["radius"] and targetX <= self.resetButtonCrood["x"] + self.resetButtonSize["radius"] and targetY >= self.resetButtonCrood["y"] - self.resetButtonSize["radius"] and targetY <= self.resetButtonCrood["y"] + self.resetButtonSize["radius"]:
                 self.scoreboard.resetScore()
                 self.lm1LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm1")["latest"]) + " / 5")
@@ -230,7 +230,7 @@ class MainGUI:
                 self.lm4LatestScoreBoard.setText("Latest Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["latest"]) + " / 5")
                 self.lm4BestScoreBoard.setText("Best Score: " + str(self.scoreboard.loadIndividualLmMarks("lm4")["best"]) + " / 5")
 
-            #exitButton onLick handling condition
+            # exit button onClick handling condition
             if targetX >= self.exitButtonCrood["x"] - self.exitButtonSize["radius"] and targetX <= self.exitButtonCrood["x"] + self.exitButtonSize["radius"] and targetY >= self.exitButtonCrood["y"] - self.exitButtonSize["radius"] and targetY <= self.exitButtonCrood["y"] + self.exitButtonSize["radius"]:
                 self.closeWin()
                 break

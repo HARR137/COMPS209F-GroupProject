@@ -4,8 +4,6 @@ import random
 from common import createMsgBox, createCircle
 
 
-
-
 def checkAnswer(randnum, ans):
     if (randnum % 2 == 0) and (ans == "odd"):
         Correct = False
@@ -22,6 +20,7 @@ def checkAnswer(randnum, ans):
 class lm1GUI():
     def __init__(self):
         pass
+
 
     def run(self):
         self.winWidth = 500
@@ -45,7 +44,6 @@ class lm1GUI():
         while True:
             if self.attempt >= self.max_attempt:  # finished all attempts
                 self.updateResult('Completed. Your score is {}/{}'.format(self.score, self.attempt))
-
                 # #ExitButton
                 self.exitButtonSize = { "width": 50, "height": 25 }
                 self.exitButtonCrood = { "x": 5, "y": 50 }
@@ -64,9 +62,7 @@ class lm1GUI():
                     y=self.exitButtonCrood["y"] + 7.4, 
                     color="white",
                     fontSize=fontSize["mFont"])
-
                 break
-
 
             QuestionBox = Text(Point(250, 180), random.randint(1, 10))
             QuestionBox.draw(self.win)
@@ -87,7 +83,6 @@ class lm1GUI():
                      theStatusBox.setText("Wrong! Add oil")
                 break
                   
-
         self.lm1OnClickHandler(self.win)
         return self.score
 
@@ -113,6 +108,7 @@ class lm1GUI():
             pass
         return None
 
+
     def lm1OnClickHandler(self, win):
         while True:
             checkMouse = win.getMouse()
@@ -124,7 +120,6 @@ class lm1GUI():
                 break
 
                     
-
 if __name__ == "__main__":
     lm1_GUI = lm1GUI()
     lm1GUI.run()

@@ -1,6 +1,6 @@
 from library.graphics import *
 from gobal_var import fontSize
-from common import createMsgBox, createImg, createRectangle,createInputBox
+from common import createMsgBox, createRectangle,createInputBox, createCircle
 import random
 
 
@@ -19,29 +19,27 @@ class lm3GUI():
         self.winWidth = 500
         self.winHeight = 500
 
-        #ExitButton
-        self.exitButtonSize= { "width": 50, "height": 25 }
-        self.exitButtonCrood = { "x": 5, "y": 5 }
-
         self.win = GraphWin('Learning Module 3 - Add and Substract', self.winWidth, self.winHeight)
-        self.exitButton = createRectangle(
-            self,
-            starting_x = self.exitButtonCrood["x"],
-            starting_y = self.exitButtonCrood["y"],
-            ending_x = self.exitButtonSize["width"],
-            ending_y = self.exitButtonSize["height"], 
-            fillColor = None, 
-            outlineColor = None
-        )
+
+        # exit button
+        self.exitButtonSize = { "width": 50, "height": 25 }
+        self.exitButtonCrood = { "x": 5, "y": 50 }
+        self.exitButtonSize = {"radius": 25}
+        self.exitButtonCrood = {"x": 5, "y": 5}
+        self.exitButton = createCircle(self,
+                                          x=self.exitButtonCrood["x"],
+                                          y=self.exitButtonCrood["y"],
+                                          radius=self.exitButtonSize["radius"], 
+                                          fillColor = "#C73618", 
+                                          outlineColor = "#C73618")
         self.exitButtonText = createMsgBox(
             self,
-            msg = "EXIT",
-            #+5 is a offset, since exitButton x,y crood is (5,5)
-            x = self.exitButtonSize["width"]/2+5,
-            y = self.exitButtonSize["height"]/2+5,
-            color = "black",
-            fontSize = fontSize["sFont"]
-        )
+            msg="x",
+            x=self.exitButtonCrood["x"] + 8.4, 
+            y=self.exitButtonCrood["y"] + 7.4, 
+            color="white",
+            fontSize=fontSize["mFont"])
+
         self.enterButtonCrood = { "starting_x": 115, "starting_y": 380, "ending_x": 215, "ending_y": 410 }
         self.enterTextCrood = { "x": 165, "y": 395 }
         self.enterButton = createRectangle(
@@ -177,7 +175,7 @@ class lm3GUI():
             resultMessage = lambda ans: "Very good! It's correct!" if (ans) else "Wrong answer... Practice makes perfect!"
             resultMessageColor = lambda ans: "green" if (ans) else "red"
 
-            #enterButton onClick
+            # enterButton onClick
             if targetX >= self.enterButtonCrood["starting_x"] and targetX <= self.enterButtonCrood["ending_x"] and targetY >= self.enterButtonCrood["starting_y"] and targetY <= self.enterButtonCrood["ending_y"]:
                 self.enterButtonClicked = True
                 checkedAnswer = self.checkAnswer(self.questions[counter])
@@ -203,8 +201,8 @@ class lm3GUI():
                     self.closeWin()
                     break
       
-            #exitButton onClick
-            if targetX >= self.exitButtonCrood["x"]  and targetX <= self.exitButtonCrood["x"] + self.exitButtonSize["width"] and targetY >= self.exitButtonCrood["y"] and targetY <= self.exitButtonCrood["y"] + self.exitButtonSize["height"] :
+            # exitButton onClick
+            if targetX >= self.exitButtonCrood["x"] - self.exitButtonSize["radius"] and targetX <= self.exitButtonCrood["x"] + self.exitButtonSize["radius"] and targetY >= self.exitButtonCrood["y"] - self.exitButtonSize["radius"] and targetY <= self.exitButtonCrood["y"] + self.exitButtonSize["radius"]:
                 self.closeWin()
                 break
                     
