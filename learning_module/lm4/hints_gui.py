@@ -37,11 +37,11 @@ class hintsGui():
 
         self.exitToStartTips = createMsgBox(
             self,
-            msg = "←  Close This Window to Begin :)",
+            msg = "(←  Close This Window to Begin)",
             x = 140, 
             y=self.exitButtonCrood["y"] + 7.4,
             color = "#C73618",
-            fontSize = fontSize["mFont"]
+            fontSize = fontSize["sFont"]
         )
 
         self.tipsHeader = createMsgBox(
@@ -51,7 +51,7 @@ class hintsGui():
             x = self.winWidth/2,
             y = self.winHeight/2-150,
             color = None,
-            fontSize = fontSize["xlFont"]
+            fontSize = fontSize["lFont"]
         )
 
         self.tips1 = createMsgBox(
@@ -60,7 +60,7 @@ class hintsGui():
             x = self.winWidth/2,
             y = self.winHeight/2-60,
             color = None,
-            fontSize = fontSize["lFont"]
+            fontSize = fontSize["mFont"]
         )
 
         self.tips2 = createImg(

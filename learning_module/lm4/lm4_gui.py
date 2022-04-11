@@ -120,17 +120,26 @@ class lm4GUI():
 
 
     def generateNumList(self, questions): 
-        margin = 55
+        # margin = 55
+        questionsSeperateList = []
         for number in questions:
-            questionsSeperate = str(number) + " "
-            self.textMsgBox.append(createMsgBox(self,
-                        msg=questionsSeperate + " ",
-                        x=190 + margin,
-                        y=120,
-                        color="white",
-                        fontSize=fontSize["xxxlFont"])
-                        )
-            margin = margin + 55
+            questionsSeperateList.append(str(number))
+        questionsSeperate = ','.join(questionsSeperateList)
+        self.questionText = createMsgBox(
+            self,
+            msg=questionsSeperate,
+            x=350, 
+            y=120, 
+            color="white",
+            fontSize=fontSize["xxxlFont"])
+            # self.textMsgBox.append(createMsgBox(self,
+            #             msg=questionsSeperate + " ",
+            #             x=190 + margin,
+            #             y=120,
+            #             color="white",
+            #             fontSize=fontSize["xxxlFont"])
+            #             )
+            # margin = margin + 55
 
 
     def getAns(self): 
@@ -205,9 +214,7 @@ class lm4GUI():
                 
                 for k in self.textMsgBox:
                     k.undraw()
-                self.textMsgBox.clear()
-                # for m in self.inputBox: 
-                #     m.undraw()
+                self.questionText.setText("")
                 self.inputBox.setText("")
                 self.checkAnsMsgBox.setText("")
                 finishAns = True

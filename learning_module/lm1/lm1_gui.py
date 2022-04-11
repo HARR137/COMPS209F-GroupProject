@@ -103,7 +103,8 @@ class lm1GUI():
         self.win.getMouse()
         ans = inputbox.getText()
         try: 
-            return ans
+            ans_low = ans.lower()
+            return ans_low
         except ValueError:
             pass
         return None
@@ -123,3 +124,4 @@ class lm1GUI():
 if __name__ == "__main__":
     lm1_GUI = lm1GUI()
     lm1GUI.run()
+    
