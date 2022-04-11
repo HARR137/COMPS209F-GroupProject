@@ -1,23 +1,13 @@
 import json
 
+
 class Scoreboard:
-
-
     def __init__(self):
         self.loadFromFile()
         self.score = 0
-        # pass
-
-    # def getTotalScore(self):
-    #     return (self.score["lm1Score"]+self.score["lm2Score"]+self.score["lm13core"]+self.score["lm4Score"])
 
 
-    #scoreFromLm = {"lm1": 1000}
     def saveScore(self, scoreFromLm):
-        #scoreFromLm  < need to determine this score come from which LM
-        #after, update self.score dict
-        #finally step save to json file saveToFile()
-        # self.scoreList[scoreFromLm.keys()] = scoreFromLm.get("lm1")
         key = list( list ( scoreFromLm.values() ) [0].keys() )[0]
 
         self.loadFromFile()

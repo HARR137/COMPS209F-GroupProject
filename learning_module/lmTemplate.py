@@ -8,7 +8,7 @@ class lmTemplateGUI():
         self.winHeight = 500
         self.win = 0
 
-        #ExitButton
+        # ExitButton
         self.exitButtonSize= { "width": 50, "height": 25 }
         self.exitButtonCrood = { "x": 5, "y": 5 }
         
@@ -25,7 +25,7 @@ class lmTemplateGUI():
         self.exitButtonText = createMsgBox(
             self,
             msg = "EXIT",
-            #+5 is a offset, since exitButton x,y crood is (5,5)
+            # +5 is a offset, since exitButton x,y crood is (5,5)
             x = self.exitButtonSize["width"]/2+5,
             y = self.exitButtonSize["height"]/2+5,
             color = "black",
@@ -33,6 +33,7 @@ class lmTemplateGUI():
         )
         self.lm1OnClickHandler(self.win)
         return 1
+
 
     def closeWin(self):
         self.win.close()
@@ -48,6 +49,8 @@ class lmTemplateGUI():
                     self.closeWin()
                     break
 
+
 if __name__ == "__main__":
     lmTemplateGUI = lmTemplateGUI()
     lmTemplateGUI.run()
+    

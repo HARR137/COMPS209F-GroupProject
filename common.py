@@ -22,7 +22,6 @@ def createImg(self, imgName, x, y):
 
 
 def createRectangle(self, **setting):
-    # x, y, width, height
     newRectangle = Rectangle(Point(setting["starting_x"], setting["starting_y"]), Point(setting["ending_x"], setting["ending_y"]))
     newRectangle.setFill(setting["fillColor"])
     newRectangle.setOutline(setting["outlineColor"])
@@ -39,10 +38,9 @@ def createCircle(self, **setting):
 
 
 def createInputBox(self, **setting):
-    # creste an input box
+    # create an input box
     inputBox = Entry(Point(setting["x"], setting["y"]), setting["length"])
     inputBox.setSize(36)
     inputBox.setFace("courier")
     inputBox.draw(self.win)
     return inputBox
-
