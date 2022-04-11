@@ -124,7 +124,7 @@ class lm4GUI():
         for number in questions:
             questionsSeperate = str(number) + " "
             self.textMsgBox.append(createMsgBox(self,
-                        msg=questionsSeperate,
+                        msg=questionsSeperate + " ",
                         x=90 + margin,
                         y=120,
                         color="white",
